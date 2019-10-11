@@ -2,12 +2,21 @@
     "name": "bearlord/esd-yii",
     "description": "esd-yii",
     "type": "library",
-    "license": "BSD",
+    "license": "BSD 3-Clause License",
     "authors": [
         {
-            "name": "ZhenQiang Zhang",
-            "email": "565364226@qq.com"
+            "name": "Zhenqiang.Zhang",
+            "email": "565364226@qq.com",
+            "homepage": "https://github.com/brealord"
         }
     ],
-    "require": {}
+    "require": {
+        "esd/esd-core":"~0.1",
+        "esd-projects/postgresql-plugin": ""
+    },
+    "autoload": {
+        "psr-4": {
+            "ESD\\Yii\\": "src/"
+        }
+    },
 }
