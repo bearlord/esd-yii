@@ -12,7 +12,7 @@
     ],
     "require": {
         "esd/esd-core":"~0.1",
-        "esd-projects/postgresql-plugin": ""
+        "esd-projects/postgresql-plugin": "~0.1@dev"
     },
     "autoload": {
         "psr-4": {
