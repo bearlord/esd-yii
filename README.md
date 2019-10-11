@@ -1,2 +1,2 @@
 # esd-yii
-esd-yii
+esd-yii for esd-projects

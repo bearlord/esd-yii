@@ -1,0 +1,13 @@
+{
+    "name": "bearlord/esd-yii",
+    "description": "esd-yii",
+    "type": "library",
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "ZhenQiang Zhang",
+            "email": "565364226@qq.com"
+        }
+    ],
+    "require": {}
+}
