@@ -10,7 +10,9 @@
         }
     ],
     "require": {
-        "esd/esd-core":"~0.1"
+        "esd/esd-core":"~0.1",
+        "ezyang/htmlpurifier": "^4.10.0",
+        "cebe/markdown": "^1.2.1"
     },
     "autoload": {
         "psr-4": {
