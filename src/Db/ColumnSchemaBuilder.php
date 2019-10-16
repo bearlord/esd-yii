@@ -8,8 +8,8 @@
 namespace ESD\Yii\Db;
 
 use Yii;
-use yii\base\BaseObject;
-use yii\helpers\StringHelper;
+use ESD\Yii\Base\BaseObject;
+use ESD\Yii\Helpers\StringHelper;
 
 /**
  * ColumnSchemaBuilder helps to define database schema types using a PHP interface.

@@ -53,7 +53,6 @@ class BaseMarkdown
 
     public function create($params)
     {
-        var_dump($params);
         // TODO: Implement create() method.
     }
 

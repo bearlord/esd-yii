@@ -7,7 +7,7 @@
 
 namespace yii\db\mssql\conditions;
 
-use yii\base\NotSupportedException;
+use ESD\Yii\Base\NotSupportedException;
 
 /**
  * {@inheritdoc}

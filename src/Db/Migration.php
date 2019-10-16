@@ -7,9 +7,9 @@
 
 namespace ESD\Yii\Db;
 
-use yii\base\Component;
+use ESD\Yii\Base\Component;
 use yii\di\Instance;
-use yii\helpers\StringHelper;
+use ESD\Yii\Helpers\StringHelper;
 
 /**
  * Migration is the base class for representing a database migration.

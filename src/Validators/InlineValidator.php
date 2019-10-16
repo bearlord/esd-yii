@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\validators;
+namespace ESD\Yii\Validators;
 
 /**
  * InlineValidator represents a validator which is defined as a method in the object being validated.

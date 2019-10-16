@@ -5,11 +5,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\validators;
+namespace ESD\Yii\Validators;
 
-use Yii;
+use ESD\Yii\Base\Yii;
 use yii\helpers\Json;
-use yii\helpers\StringHelper;
+use ESD\Yii\Helpers\StringHelper;
 use yii\web\JsExpression;
 
 /**

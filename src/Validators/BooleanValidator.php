@@ -5,9 +5,9 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\validators;
+namespace ESD\Yii\Validators;
 
-use Yii;
+use ESD\Yii\Base\Yii;
 
 /**
  * BooleanValidator checks if the attribute value is a boolean value.

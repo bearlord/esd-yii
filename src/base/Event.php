@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Base;
 
-use yii\helpers\StringHelper;
+use ESD\Yii\Helpers\StringHelper;
 
 /**
  * Event is the base class for all event classes.

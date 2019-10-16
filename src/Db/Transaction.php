@@ -9,7 +9,7 @@ namespace ESD\Yii\Db;
 
 use Yii;
 use ESD\Yii\Base\InvalidConfigException;
-use yii\base\NotSupportedException;
+use ESD\Yii\Base\NotSupportedException;
 
 /**
  * Transaction represents a DB transaction.

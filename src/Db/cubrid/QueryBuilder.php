@@ -8,7 +8,7 @@
 namespace yii\db\cubrid;
 
 use yii\base\InvalidArgumentException;
-use yii\base\NotSupportedException;
+use ESD\Yii\Base\NotSupportedException;
 use ESD\Yii\Db\Constraint;
 use ESD\Yii\Db\Exception;
 use ESD\Yii\Db\Expression;

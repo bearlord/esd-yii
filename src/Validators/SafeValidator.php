@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\validators;
+namespace ESD\Yii\Validators;
 
 /**
  * SafeValidator serves as a dummy validator whose main purpose is to mark the attributes to be safe for massive assignment.

@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\Db\pgsql;
+namespace ESD\Yii\Db\Pgsql;
 
 use ESD\Yii\Base\InvalidArgumentException;
 use ESD\Yii\Db\Constraint;
@@ -84,10 +84,10 @@ class QueryBuilder extends \ESD\Yii\Db\QueryBuilder
     protected function defaultConditionClasses()
     {
         return array_merge(parent::defaultConditionClasses(), [
-            'ILIKE' => 'yii\db\conditions\LikeCondition',
-            'NOT ILIKE' => 'yii\db\conditions\LikeCondition',
-            'OR ILIKE' => 'yii\db\conditions\LikeCondition',
-            'OR NOT ILIKE' => 'yii\db\conditions\LikeCondition',
+            'ILIKE' => 'ESD\Yii\Db\conditions\LikeCondition',
+            'NOT ILIKE' => 'ESD\Yii\Db\conditions\LikeCondition',
+            'OR ILIKE' => 'ESD\Yii\Db\conditions\LikeCondition',
+            'OR NOT ILIKE' => 'ESD\Yii\Db\conditions\LikeCondition',
         ]);
     }
 
@@ -97,8 +97,8 @@ class QueryBuilder extends \ESD\Yii\Db\QueryBuilder
     protected function defaultExpressionBuilders()
     {
         return array_merge(parent::defaultExpressionBuilders(), [
-            'yii\db\ArrayExpression' => 'yii\db\pgsql\ArrayExpressionBuilder',
-            'yii\db\JsonExpression' => 'yii\db\pgsql\JsonExpressionBuilder',
+            'ESD\Yii\Db\ArrayExpression' => 'ESD\Yii\Db\Pgsql\ArrayExpressionBuilder',
+            'ESD\Yii\Db\JsonExpression' => 'ESD\Yii\Db\Pgsql\JsonExpressionBuilder',
         ]);
     }
 

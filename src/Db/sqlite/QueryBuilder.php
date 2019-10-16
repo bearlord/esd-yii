@@ -8,13 +8,13 @@
 namespace yii\db\sqlite;
 
 use yii\base\InvalidArgumentException;
-use yii\base\NotSupportedException;
+use ESD\Yii\Base\NotSupportedException;
 use ESD\Yii\Db\Connection;
 use ESD\Yii\Db\Constraint;
 use ESD\Yii\Db\Expression;
 use ESD\Yii\Db\ExpressionInterface;
 use ESD\Yii\Db\Query;
-use yii\helpers\StringHelper;
+use ESD\Yii\Helpers\StringHelper;
 
 /**
  * QueryBuilder is the query builder for SQLite databases.

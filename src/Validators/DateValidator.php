@@ -5,11 +5,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\validators;
+namespace ESD\Yii\Validators;
 
 use DateTime;
 use IntlDateFormatter;
-use Yii;
+use ESD\Yii\Base\Yii;
 use ESD\Yii\Base\InvalidConfigException;
 use yii\helpers\FormatConverter;
 

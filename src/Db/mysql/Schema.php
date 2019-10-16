@@ -8,7 +8,7 @@
 namespace yii\db\mysql;
 
 use ESD\Yii\Base\InvalidConfigException;
-use yii\base\NotSupportedException;
+use ESD\Yii\Base\NotSupportedException;
 use ESD\Yii\Db\Constraint;
 use ESD\Yii\Db\ConstraintFinderInterface;
 use ESD\Yii\Db\ConstraintFinderTrait;

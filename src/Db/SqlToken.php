@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db;
 
-use yii\base\BaseObject;
+use ESD\Yii\Base\BaseObject;
 
 /**
  * SqlToken represents SQL tokens produced by [[SqlTokenizer]] or its child classes.

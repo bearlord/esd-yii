@@ -7,8 +7,8 @@
 
 namespace ESD\Yii\Db;
 
-use yii\base\BaseObject;
-use yii\helpers\StringHelper;
+use ESD\Yii\Base\BaseObject;
+use ESD\Yii\Helpers\StringHelper;
 
 /**
  * ColumnSchema class describes the metadata of a column in a database table.

@@ -7,8 +7,8 @@
 
 namespace ESD\Yii\Db;
 
-use yii\base\BaseObject;
-use yii\base\InvalidArgumentException;
+use ESD\Yii\Base\BaseObject;
+use ESD\Yii\Base\InvalidArgumentException;
 
 /**
  * TableSchema represents the metadata of a database table.

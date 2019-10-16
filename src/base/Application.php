@@ -10,6 +10,7 @@ namespace ESD\Yii\Base;
 
 
 use DI\Container;
+use ESD\Core\Server\Server;
 use ESD\Yii\Db\Connection;
 
 class Application
@@ -35,10 +36,34 @@ class Application
 
     public function getDb()
     {
+        /*
         $db = new Connection();
         $db->dsn = "pgsql:host=192.168.108.130;dbname=sd_test";
         $db->username = 'postgres';
         $db->password = '123456';
         return $db;
+        */
+
+        $dbConfig = Server::$instance->getConfigContext()->get('esd-yii.db');
+
+        $params = array_merge([
+            'class' => \ESD\Yii\Db\Connection::class
+        ], $dbConfig);
+
+        $db = Yii::createObject($params);
+        return $db;
+    }
+
+    /**
+     * Returns the internationalization (i18n) component
+     * @return \ESD\Yii\I18n\I18N the internationalization application component.
+     */
+    public function getI18n()
+    {
+        $i18n = Yii::createObject([
+            'class' => \ESD\Yii\i18n\I18N::class
+        ]);
+
+        return $i18n;
     }
 }

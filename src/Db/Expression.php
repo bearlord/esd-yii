@@ -28,7 +28,7 @@ namespace ESD\Yii\Db;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class Expression extends \yii\base\BaseObject implements ExpressionInterface
+class Expression extends \ESD\Yii\Base\BaseObject implements ExpressionInterface
 {
     /**
      * @var string the DB expression

@@ -7,12 +7,13 @@
 
 namespace ESD\Yii\Db;
 
-use Yii;
-use yii\base\InvalidArgumentException;
+use ESD\Yii\Base\Yii;
+use ESD\Yii\Base\Application;
+use ESD\Yii\Base\InvalidArgumentException;
 use ESD\Yii\Base\InvalidConfigException;
 use ESD\Yii\Helpers\ArrayHelper;
-use yii\helpers\Inflector;
-use yii\helpers\StringHelper;
+use ESD\Yii\Helpers\Inflector;
+use ESD\Yii\Helpers\StringHelper;
 
 /**
  * ActiveRecord is the base class for classes representing relational data in terms of objects.
@@ -132,7 +133,7 @@ class ActiveRecord extends BaseActiveRecord
      */
     public static function getDb()
     {
-        return Yii::$app->getDb();
+        return Application::instance()->getDb();
     }
 
     /**

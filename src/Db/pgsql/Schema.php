@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\Db\pgsql;
+namespace ESD\Yii\Db\Pgsql;
 
 use ESD\Yii\Base\NotSupportedException;
 use ESD\Yii\Db\CheckConstraint;
@@ -40,7 +40,7 @@ class Schema extends \ESD\Yii\Db\Schema implements ConstraintFinderInterface
     /**
      * {@inheritdoc}
      */
-    public $columnSchemaClass = 'ESD\Yii\Db\pgsql\ColumnSchema';
+    public $columnSchemaClass = 'ESD\Yii\Db\Pgsql\ColumnSchema';
     /**
      * @var array mapping from physical column types (keys) to abstract
      * column types (values)

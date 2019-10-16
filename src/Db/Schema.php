@@ -90,7 +90,7 @@ abstract class Schema extends BaseObject
      * @var string|array column schema class or class config
      * @since 2.0.11
      */
-    public $columnSchemaClass = 'yii\db\ColumnSchema';
+    public $columnSchemaClass = 'ESD\Yii\Db\ColumnSchema';
 
     /**
      * @var string|string[] character used to quote schema, table, etc. names.

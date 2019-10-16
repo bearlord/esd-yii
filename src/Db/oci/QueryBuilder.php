@@ -13,7 +13,7 @@ use ESD\Yii\Db\Constraint;
 use ESD\Yii\Db\Exception;
 use ESD\Yii\Db\Expression;
 use ESD\Yii\Db\Query;
-use yii\helpers\StringHelper;
+use ESD\Yii\Helpers\StringHelper;
 use ESD\Yii\Db\ExpressionInterface;
 
 /**

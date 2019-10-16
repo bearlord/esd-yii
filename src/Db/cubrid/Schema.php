@@ -7,7 +7,7 @@
 
 namespace yii\db\cubrid;
 
-use yii\base\NotSupportedException;
+use ESD\Yii\Base\NotSupportedException;
 use ESD\Yii\Db\Constraint;
 use ESD\Yii\Db\ConstraintFinderInterface;
 use ESD\Yii\Db\ConstraintFinderTrait;
@@ -254,7 +254,7 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
     /**
      * Loads the column information into a [[ColumnSchema]] object.
      * @param array $info column information
-     * @return \yii\db\ColumnSchema the column schema object
+     * @return \ESD\Yii\Db\ColumnSchema the column schema object
      */
     protected function loadColumnSchema($info)
     {

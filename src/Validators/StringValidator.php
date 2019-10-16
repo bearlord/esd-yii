@@ -5,9 +5,9 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\validators;
+namespace ESD\Yii\Validators;
 
-use Yii;
+use ESD\Yii\Base\Yii;
 
 /**
  * StringValidator validates that the attribute value is of certain length.
@@ -82,7 +82,7 @@ class StringValidator extends Validator
             $this->length = null;
         }
         if ($this->encoding === null) {
-            $this->encoding = Yii::$app ? Yii::$app->charset : 'UTF-8';
+            $this->encoding = 'UTF-8';
         }
         if ($this->message === null) {
             $this->message = Yii::t('yii', '{attribute} must be a string.');

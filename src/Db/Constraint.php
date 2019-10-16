@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db;
 
-use yii\base\BaseObject;
+use ESD\Yii\Base\BaseObject;
 
 /**
  * Constraint represents the metadata of a table constraint.

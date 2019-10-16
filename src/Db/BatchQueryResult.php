@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db;
 
-use yii\base\BaseObject;
+use ESD\Yii\Base\BaseObject;
 
 /**
  * BatchQueryResult represents a batch query from which you can retrieve data in batches.

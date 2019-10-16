@@ -275,7 +275,7 @@ class Connection extends Component
      * [[Schema]] class to support DBMS that is not supported by Yii.
      */
     public $schemaMap = [
-        'pgsql' => 'ESD\Yii\Db\pgsql\Schema', // PostgreSQL
+        'pgsql' => 'ESD\Yii\Db\Pgsql\Schema', // PostgreSQL
         'mysqli' => 'yii\db\mysql\Schema', // MySQL
         'mysql' => 'yii\db\mysql\Schema', // MySQL
         'sqlite' => 'yii\db\sqlite\Schema', // sqlite 3
@@ -673,9 +673,9 @@ class Connection extends Component
             }
             if (isset($driver)) {
                 if ($driver === 'mssql' || $driver === 'dblib') {
-                    $pdoClass = 'yii\db\mssql\PDO';
+                    $pdoClass = 'ESD\Yii\Db\Mssql\PDO';
                 } elseif ($driver === 'sqlsrv') {
-                    $pdoClass = 'yii\db\mssql\SqlsrvPDO';
+                    $pdoClass = '\'ESD\Yii\Db\Mssql\SqlsrvPDO';
                 }
             }
         }

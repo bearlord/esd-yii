@@ -12,9 +12,9 @@ use yii\base\InvalidArgumentException;
 use yii\base\InvalidCallException;
 use ESD\Yii\Base\InvalidConfigException;
 use ESD\Yii\Base\InvalidParamException;
-use yii\base\Model;
+use ESD\Yii\Base\Model;
 use yii\base\ModelEvent;
-use yii\base\NotSupportedException;
+use ESD\Yii\Base\NotSupportedException;
 use yii\base\UnknownMethodException;
 use ESD\Yii\Helpers\ArrayHelper;
 

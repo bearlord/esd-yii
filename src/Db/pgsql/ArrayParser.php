@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\Db\pgsql;
+namespace ESD\Yii\Db\Pgsql;
 
 /**
  * The class converts PostgreSQL array representation to PHP array

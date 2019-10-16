@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\Db\pgsql;
+namespace ESD\Yii\Db\Pgsql;
 
 use ESD\Yii\Db\ArrayExpression;
 use ESD\Yii\Db\ExpressionInterface;
@@ -16,7 +16,7 @@ use ESD\Yii\Db\JsonExpression;
  *
  * @author Dmytro Naumenko <d.naumenko.a@gmail.com>
  */
-class ColumnSchema extends \yii\db\ColumnSchema
+class ColumnSchema extends \ESD\Yii\Db\ColumnSchema
 {
     /**
      * @var int the dimension of array. Defaults to 0, means this column is not an array.

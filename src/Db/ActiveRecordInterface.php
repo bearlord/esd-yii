@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db;
 
-use yii\base\StaticInstanceInterface;
+use ESD\Yii\Base\StaticInstanceInterface;
 
 /**
  * ActiveRecordInterface.

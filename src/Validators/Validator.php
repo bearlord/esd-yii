@@ -5,11 +5,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\validators;
+namespace ESD\Yii\Validators;
 
-use Yii;
-use yii\base\Component;
-use yii\base\NotSupportedException;
+use ESD\Yii\Base\Yii;
+use ESD\Yii\Base\Component;
+use ESD\Yii\Base\NotSupportedException;
 
 /**
  * Validator is the base class for all validators.
@@ -60,44 +60,44 @@ class Validator extends Component
      * @var array list of built-in validators (name => class or configuration)
      */
     public static $builtInValidators = [
-        'boolean' => 'yii\validators\BooleanValidator',
+        'boolean' => 'ESD\Yii\Validators\BooleanValidator',
         'captcha' => 'yii\captcha\CaptchaValidator',
-        'compare' => 'yii\validators\CompareValidator',
-        'date' => 'yii\validators\DateValidator',
+        'compare' => 'ESD\Yii\Validators\CompareValidator',
+        'date' => 'ESD\Yii\Validators\DateValidator',
         'datetime' => [
-            'class' => 'yii\validators\DateValidator',
+            'class' => 'ESD\Yii\Validators\DateValidator',
             'type' => DateValidator::TYPE_DATETIME,
         ],
         'time' => [
-            'class' => 'yii\validators\DateValidator',
+            'class' => 'ESD\Yii\Validators\DateValidator',
             'type' => DateValidator::TYPE_TIME,
         ],
-        'default' => 'yii\validators\DefaultValueValidator',
-        'double' => 'yii\validators\NumberValidator',
-        'each' => 'yii\validators\EachValidator',
-        'email' => 'yii\validators\EmailValidator',
-        'exist' => 'yii\validators\ExistValidator',
-        'file' => 'yii\validators\FileValidator',
-        'filter' => 'yii\validators\FilterValidator',
-        'image' => 'yii\validators\ImageValidator',
-        'in' => 'yii\validators\RangeValidator',
+        'default' => 'ESD\Yii\Validators\DefaultValueValidator',
+        'double' => 'ESD\Yii\Validators\NumberValidator',
+        'each' => 'ESD\Yii\Validators\EachValidator',
+        'email' => 'ESD\Yii\Validators\EmailValidator',
+        'exist' => 'ESD\Yii\Validators\ExistValidator',
+        'file' => 'ESD\Yii\Validators\FileValidator',
+        'filter' => 'ESD\Yii\Validators\FilterValidator',
+        'image' => 'ESD\Yii\Validators\ImageValidator',
+        'in' => 'ESD\Yii\Validators\RangeValidator',
         'integer' => [
-            'class' => 'yii\validators\NumberValidator',
+            'class' => 'ESD\Yii\Validators\NumberValidator',
             'integerOnly' => true,
         ],
-        'match' => 'yii\validators\RegularExpressionValidator',
-        'number' => 'yii\validators\NumberValidator',
-        'required' => 'yii\validators\RequiredValidator',
-        'safe' => 'yii\validators\SafeValidator',
-        'string' => 'yii\validators\StringValidator',
+        'match' => 'ESD\Yii\Validators\RegularExpressionValidator',
+        'number' => 'ESD\Yii\Validators\NumberValidator',
+        'required' => 'ESD\Yii\Validators\RequiredValidator',
+        'safe' => 'ESD\Yii\Validators\SafeValidator',
+        'string' => 'ESD\Yii\Validators\StringValidator',
         'trim' => [
-            'class' => 'yii\validators\FilterValidator',
+            'class' => 'ESD\Yii\Validators\FilterValidator',
             'filter' => 'trim',
             'skipOnArray' => true,
         ],
-        'unique' => 'yii\validators\UniqueValidator',
-        'url' => 'yii\validators\UrlValidator',
-        'ip' => 'yii\validators\IpValidator',
+        'unique' => 'ESD\Yii\Validators\UniqueValidator',
+        'url' => 'ESD\Yii\Validators\UrlValidator',
+        'ip' => 'ESD\Yii\Validators\IpValidator',
     ];
     /**
      * @var array|string attributes to be validated by this validator. For multiple attributes,

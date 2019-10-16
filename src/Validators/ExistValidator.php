@@ -5,11 +5,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\validators;
+namespace ESD\Yii\Validators;
 
-use Yii;
+use ESD\Yii\Base\Yii;
 use ESD\Yii\Base\InvalidConfigException;
-use yii\base\Model;
+use ESD\Yii\Base\Model;
 use ESD\Yii\Db\ActiveQuery;
 use ESD\Yii\Db\ActiveRecord;
 use ESD\Yii\Db\QueryInterface;

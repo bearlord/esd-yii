@@ -16,7 +16,7 @@ use ESD\Yii\Db\JsonExpression;
  * @author Dmytro Naumenko <d.naumenko.a@gmail.com>
  * @since 2.0.14.1
  */
-class ColumnSchema extends \yii\db\ColumnSchema
+class ColumnSchema extends \ESD\Yii\Db\ColumnSchema
 {
     /**
      * @var bool whether the column schema should OMIT using JSON support feature.

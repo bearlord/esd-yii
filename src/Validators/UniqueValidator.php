@@ -5,15 +5,15 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\validators;
+namespace ESD\Yii\Validators;
 
-use Yii;
-use yii\base\Model;
+use ESD\Yii\Base\Yii;
+use ESD\Yii\Base\Model;
 use ESD\Yii\Db\ActiveQuery;
 use ESD\Yii\Db\ActiveQueryInterface;
 use ESD\Yii\Db\ActiveRecord;
 use ESD\Yii\Db\ActiveRecordInterface;
-use yii\helpers\Inflector;
+use ESD\Yii\Helpers\Inflector;
 
 /**
  * UniqueValidator validates that the attribute value is unique in the specified database table.

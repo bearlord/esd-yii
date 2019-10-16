@@ -166,9 +166,9 @@ class QueryBuilder extends BaseObject
     protected function defaultExpressionBuilders()
     {
         return [
-            'yii\db\Query' => 'yii\db\QueryExpressionBuilder',
-            'yii\db\PdoValue' => 'yii\db\PdoValueBuilder',
-            'yii\db\Expression' => 'yii\db\ExpressionBuilder',
+            'ESD\Yii\Db\Query' => 'ESD\Yii\Db\QueryExpressionBuilder',
+            'ESD\Yii\Db\PdoValue' => 'ESD\Yii\Db\PdoValueBuilder',
+            'ESD\Yii\Db\Expression' => 'ESD\Yii\Db\ExpressionBuilder',
             'ESD\Yii\Db\Conditions\ConjunctionCondition' => 'ESD\Yii\Db\Conditions\ConjunctionConditionBuilder',
             'ESD\Yii\Db\Conditions\NotCondition' => 'ESD\Yii\Db\Conditions\NotConditionBuilder',
             'ESD\Yii\Db\Conditions\AndCondition' => 'ESD\Yii\Db\Conditions\ConjunctionConditionBuilder',

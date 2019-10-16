@@ -5,9 +5,9 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\validators;
+namespace ESD\Yii\Validators;
 
-use Yii;
+use ESD\Yii\Base\Yii;
 
 /**
  * RequiredValidator validates that the specified attribute does not have null or empty value.

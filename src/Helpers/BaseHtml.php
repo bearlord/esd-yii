@@ -10,7 +10,7 @@ namespace ESD\Yii\Helpers;
 use Yii;
 
 use ESD\Helpers\Base\InvalidArgumentException;
-use yii\base\Model;
+use ESD\Yii\Base\Model;
 use ESD\Yii\Db\ActiveRecordInterface;
 use yii\validators\StringValidator;
 use yii\web\Request;

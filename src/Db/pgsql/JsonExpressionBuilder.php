@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\Db\pgsql;
+namespace ESD\Yii\Db\Pgsql;
 
 use ESD\Yii\Db\ArrayExpression;
 use ESD\Yii\Db\ExpressionBuilderInterface;

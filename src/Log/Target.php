@@ -11,7 +11,7 @@ use ESD\Yii\Base\Yii;
 use ESD\Yii\Base\Component;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
-use yii\helpers\StringHelper;
+use ESD\Yii\Helpers\StringHelper;
 use yii\helpers\VarDumper;
 use yii\web\Request;
 
