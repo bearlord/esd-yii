@@ -10,6 +10,7 @@ namespace ESD\Yii\Base;
 
 
 use DI\Container;
+use ESD\Core\DI\DI;
 use ESD\Core\Server\Server;
 use ESD\Yii\Db\Connection;
 
@@ -36,21 +37,22 @@ class Application
 
     public function getDb()
     {
-        /*
-        $db = new Connection();
-        $db->dsn = "pgsql:host=192.168.108.130;dbname=sd_test";
-        $db->username = 'postgres';
-        $db->password = '123456';
-        return $db;
-        */
+        $params = Server::$instance->getConfigContext()->get('esd-yii.db');
 
-        $dbConfig = Server::$instance->getConfigContext()->get('esd-yii.db');
+        $containerKey = 'esd-yii.db';
+        $db = null;
 
-        $params = array_merge([
-            'class' => \ESD\Yii\Db\Connection::class
-        ], $dbConfig);
+        //判断ESD的容器是否有connection对象
+        if (DI::getInstance()->getContainer()->has($containerKey)) {
+            $db = DI::getInstance()->getContainer()->get($containerKey);
+            return $db;
+        }
 
+        //如果容器没有connection对象，借由Yii容器创建，按key值存入ESD的容器
         $db = Yii::createObject($params);
+        $db->open();
+        DI::getInstance()->getContainer()->set($containerKey, $db);
+
         return $db;
     }
 

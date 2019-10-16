@@ -276,15 +276,15 @@ class Connection extends Component
      */
     public $schemaMap = [
         'pgsql' => 'ESD\Yii\Db\Pgsql\Schema', // PostgreSQL
-        'mysqli' => 'yii\db\mysql\Schema', // MySQL
-        'mysql' => 'yii\db\mysql\Schema', // MySQL
-        'sqlite' => 'yii\db\sqlite\Schema', // sqlite 3
-        'sqlite2' => 'yii\db\sqlite\Schema', // sqlite 2
-        'sqlsrv' => 'yii\db\mssql\Schema', // newer MSSQL driver on MS Windows hosts
-        'oci' => 'yii\db\oci\Schema', // Oracle driver
-        'mssql' => 'yii\db\mssql\Schema', // older MSSQL driver on MS Windows hosts
-        'dblib' => 'yii\db\mssql\Schema', // dblib drivers on GNU/Linux (and maybe other OSes) hosts
-        'cubrid' => 'yii\db\cubrid\Schema', // CUBRID
+        'mysqli' => 'ESD\Yii\Db\mysql\Schema', // MySQL
+        'mysql' => 'ESD\Yii\Db\mysql\Schema', // MySQL
+        'sqlite' => 'ESD\Yii\Db\sqlite\Schema', // sqlite 3
+        'sqlite2' => 'ESD\Yii\Db\sqlite\Schema', // sqlite 2
+        'sqlsrv' => 'ESD\Yii\Db\mssql\Schema', // newer MSSQL driver on MS Windows hosts
+        'oci' => 'ESD\Yii\Db\oci\Schema', // Oracle driver
+        'mssql' => 'ESD\Yii\Db\mssql\Schema', // older MSSQL driver on MS Windows hosts
+        'dblib' => 'ESD\Yii\Db\mssql\Schema', // dblib drivers on GNU/Linux (and maybe other OSes) hosts
+        'cubrid' => 'ESD\Yii\Db\cubrid\Schema', // CUBRID
     ];
     /**
      * @var string Custom PDO wrapper class. If not set, it will use [[PDO]] or [[\yii\db\mssql\PDO]] when MSSQL is used.
@@ -724,6 +724,7 @@ class Connection extends Component
         }
         $config['db'] = $this;
         $config['sql'] = $sql;
+
         /** @var Command $command */
         $command = Yii::createObject($config);
         return $command->bindValues($params);
@@ -994,7 +995,7 @@ class Connection extends Component
      */
     public function getMasterPdo()
     {
-        $this->open();
+//        $this->open();
         return $this->pdo;
     }
 

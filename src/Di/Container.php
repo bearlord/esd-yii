@@ -359,7 +359,7 @@ class Container extends Component
      * @return object the newly created instance of the specified class
      * @throws NotInstantiableException If resolved to an abstract class or an interface (since 2.0.9)
      */
-    protected function build($class, $params, $config)
+    public function build($class, $params, $config)
     {
         /* @var $reflection ReflectionClass */
         list($reflection, $dependencies) = $this->getDependencies($class);
