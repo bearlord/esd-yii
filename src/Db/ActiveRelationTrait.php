@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db;
 
-use yii\base\InvalidArgumentException;
+use ESD\Yii\Base\InvalidArgumentException;
 use ESD\Yii\Base\InvalidConfigException;
 
 /**

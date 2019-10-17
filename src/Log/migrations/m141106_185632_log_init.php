@@ -5,8 +5,8 @@
  * @license http://www.yiiframework.com/license/
  */
 
-use yii\base\InvalidConfigException;
-use yii\db\Migration;
+use ESD\Yii\Base\InvalidConfigException;
+use ESD\Yii\Db\Migration;
 use yii\log\DbTarget;
 
 /**

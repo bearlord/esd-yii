@@ -9,7 +9,7 @@ namespace ESD\Yii\Log;
 
 use ESD\Yii\Yii;
 use ESD\Yii\Base\Component;
-use yii\base\ErrorHandler;
+use ESD\Yii\Base\ErrorHandler;
 
 /**
  * Dispatcher manages a set of [[Target|log targets]].

@@ -9,10 +9,10 @@ namespace ESD\Yii\Log;
 
 use ESD\Yii\Yii;
 use ESD\Yii\Base\Component;
-use yii\base\InvalidConfigException;
-use yii\helpers\ArrayHelper;
+use ESD\Yii\Base\InvalidConfigException;
+use ESD\Yii\Helpers\ArrayHelper;
 use ESD\Yii\Helpers\StringHelper;
-use yii\helpers\VarDumper;
+use ESD\Yii\Helpers\VarDumper;
 use yii\web\Request;
 
 /**

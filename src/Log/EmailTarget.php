@@ -8,8 +8,8 @@
 namespace ESD\Yii\Log;
 
 use ESD\Yii\Yii;
-use yii\base\InvalidConfigException;
-use yii\di\Instance;
+use ESD\Yii\Base\InvalidConfigException;
+use ESD\Yii\Di\Instance;
 use yii\mail\MailerInterface;
 
 /**

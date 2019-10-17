@@ -8,7 +8,7 @@
 namespace ESD\Yii\Db;
 
 use ESD\Yii\Base\Component;
-use yii\di\Instance;
+use ESD\Yii\Di\Instance;
 use ESD\Yii\Helpers\StringHelper;
 
 /**

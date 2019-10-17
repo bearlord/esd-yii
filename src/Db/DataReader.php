@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db;
 
-use yii\base\InvalidCallException;
+use ESD\Yii\Base\InvalidCallException;
 
 /**
  * DataReader represents a forward-only stream of rows from a query result set.

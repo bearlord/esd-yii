@@ -12,7 +12,7 @@ use Yii;
 use ESD\Helpers\Base\InvalidArgumentException;
 use ESD\Yii\Base\Model;
 use ESD\Yii\Db\ActiveRecordInterface;
-use yii\validators\StringValidator;
+use ESD\Yii\Validators\StringValidator;
 use yii\web\Request;
 
 /**

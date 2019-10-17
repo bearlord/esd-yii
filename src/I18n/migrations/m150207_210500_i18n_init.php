@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-use yii\db\Migration;
+use ESD\Yii\Db\Migration;
 
 /**
  * Initializes i18n messages tables.

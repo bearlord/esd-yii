@@ -11,7 +11,7 @@ use DateTime;
 use IntlDateFormatter;
 use ESD\Yii\Yii;
 use ESD\Yii\Base\InvalidConfigException;
-use yii\helpers\FormatConverter;
+use ESD\Yii\Helpers\FormatConverter;
 
 /**
  * DateValidator verifies if the attribute represents a date, time or datetime in a proper [[format]].

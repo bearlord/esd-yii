@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db\Oci;
 
-use yii\base\InvalidArgumentException;
+use ESD\Yii\Base\InvalidArgumentException;
 use ESD\Yii\Db\Connection;
 use ESD\Yii\Db\Constraint;
 use ESD\Yii\Db\Exception;

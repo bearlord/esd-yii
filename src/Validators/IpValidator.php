@@ -9,9 +9,9 @@ namespace ESD\Yii\Validators;
 
 use ESD\Yii\Yii;
 use ESD\Yii\Base\InvalidConfigException;
-use yii\helpers\Html;
-use yii\helpers\IpHelper;
-use yii\helpers\Json;
+use ESD\Yii\Helpers\Html;
+use ESD\Yii\Helpers\IpHelper;
+use ESD\Yii\Helpers\Json;
 use yii\web\JsExpression;
 
 /**

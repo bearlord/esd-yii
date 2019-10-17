@@ -12,7 +12,7 @@ use ESD\Yii\Db\ExpressionBuilderTrait;
 use ESD\Yii\Db\ExpressionInterface;
 use ESD\Yii\Db\JsonExpression;
 use ESD\Yii\Db\Query;
-use yii\helpers\Json;
+use ESD\Yii\Helpers\Json;
 
 /**
  * Class JsonExpressionBuilder builds [[JsonExpression]] for MySQL DBMS.

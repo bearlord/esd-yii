@@ -8,11 +8,11 @@
 namespace ESD\Yii\Log;
 
 use ESD\Yii\Yii;
-use yii\base\InvalidConfigException;
-use yii\db\Connection;
-use yii\db\Exception;
-use yii\di\Instance;
-use yii\helpers\VarDumper;
+use ESD\Yii\Base\InvalidConfigException;
+use ESD\Yii\Db\Connection;
+use ESD\Yii\Db\Exception;
+use ESD\Yii\Di\Instance;
+use ESD\Yii\Helpers\VarDumper;
 
 /**
  * DbTarget stores log messages in a database table.

@@ -8,14 +8,14 @@
 namespace ESD\Yii\Db;
 
 use Yii;
-use yii\base\InvalidArgumentException;
-use yii\base\InvalidCallException;
+use ESD\Yii\Base\InvalidArgumentException;
+use ESD\Yii\Base\InvalidCallException;
 use ESD\Yii\Base\InvalidConfigException;
 use ESD\Yii\Base\InvalidParamException;
 use ESD\Yii\Base\Model;
-use yii\base\ModelEvent;
+use ESD\Yii\Base\ModelEvent;
 use ESD\Yii\Base\NotSupportedException;
-use yii\base\UnknownMethodException;
+use ESD\Yii\Base\UnknownMethodException;
 use ESD\Yii\Helpers\ArrayHelper;
 
 /**

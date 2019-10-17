@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db\Oci;
 
-use yii\base\InvalidCallException;
+use ESD\Yii\Base\InvalidCallException;
 use ESD\Yii\Base\NotSupportedException;
 use ESD\Yii\Db\CheckConstraint;
 use ESD\Yii\Db\ColumnSchema;

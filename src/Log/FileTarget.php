@@ -8,8 +8,8 @@
 namespace ESD\Yii\Log;
 
 use ESD\Yii\Yii;
-use yii\base\InvalidConfigException;
-use yii\helpers\FileHelper;
+use ESD\Yii\Base\InvalidConfigException;
+use ESD\Yii\Helpers\FileHelper;
 
 /**
  * FileTarget records log messages in a file.

@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db\Sqlite;
 
-use yii\base\InvalidArgumentException;
+use ESD\Yii\Base\InvalidArgumentException;
 use ESD\Yii\Base\NotSupportedException;
 use ESD\Yii\Db\Connection;
 use ESD\Yii\Db\Constraint;

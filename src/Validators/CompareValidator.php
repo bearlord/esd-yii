@@ -9,7 +9,7 @@ namespace ESD\Yii\Validators;
 
 use ESD\Yii\Yii;
 use ESD\Yii\Base\InvalidConfigException;
-use yii\helpers\Html;
+use ESD\Yii\Helpers\Html;
 
 /**
  * CompareValidator compares the specified attribute value with another value.

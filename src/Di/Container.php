@@ -36,7 +36,7 @@ use ESD\Yii\Helpers\ArrayHelper;
  * ```php
  * namespace app\models;
  *
- * use yii\base\BaseObject;
+ * use ESD\Yii\Base\BaseObject;
  * use ESD\Yii\Db\Connection;
  * use yii\di\Container;
  *

@@ -8,9 +8,9 @@
 namespace ESD\Yii\Validators;
 
 use ESD\Yii\Yii;
-use yii\helpers\FileHelper;
-use yii\helpers\Html;
-use yii\helpers\Json;
+use ESD\Yii\Helpers\FileHelper;
+use ESD\Yii\Helpers\Html;
+use ESD\Yii\Helpers\Json;
 use yii\web\JsExpression;
 use yii\web\UploadedFile;
 

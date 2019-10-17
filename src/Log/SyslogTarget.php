@@ -8,7 +8,7 @@
 namespace ESD\Yii\Log;
 
 use ESD\Yii\Yii;
-use yii\helpers\VarDumper;
+use ESD\Yii\Helpers\VarDumper;
 
 /**
  * SyslogTarget writes log to syslog.
