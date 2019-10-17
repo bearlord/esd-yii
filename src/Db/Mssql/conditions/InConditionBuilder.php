@@ -15,7 +15,7 @@ use ESD\Yii\Base\NotSupportedException;
  * @author Dmytro Naumenko <d.naumenko.a@gmail.com>
  * @since 2.0.14
  */
-class InConditionBuilder extends \yii\db\conditions\InConditionBuilder
+class InConditionBuilder extends \ESD\Yii\Db\Conditions\InConditionBuilder
 {
     /**
      * {@inheritdoc}

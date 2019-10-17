@@ -22,7 +22,7 @@ use ESD\Yii\Helpers\StringHelper;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class QueryBuilder extends \yii\db\QueryBuilder
+class QueryBuilder extends \ESD\Yii\Db\QueryBuilder
 {
     /**
      * @var array mapping from abstract column types (keys) to physical column types (values).

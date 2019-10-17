@@ -13,7 +13,7 @@ use ESD\Yii\Db\ExpressionInterface;
 /**
  * {@inheritdoc}
  */
-class InConditionBuilder extends \yii\db\conditions\InConditionBuilder
+class InConditionBuilder extends \ESD\Yii\Db\Conditions\InConditionBuilder
 {
     /**
      * Method builds the raw SQL from the $expression that will not be additionally

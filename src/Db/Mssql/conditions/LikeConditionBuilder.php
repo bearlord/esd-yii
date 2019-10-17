@@ -10,7 +10,7 @@ namespace ESD\Yii\Db\Mssql\conditions;
 /**
  * {@inheritdoc}
  */
-class LikeConditionBuilder extends \yii\db\conditions\LikeConditionBuilder
+class LikeConditionBuilder extends \ESD\Yii\Db\Conditions\LikeConditionBuilder
 {
     /**
      * {@inheritdoc}

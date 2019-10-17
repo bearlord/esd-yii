@@ -25,7 +25,7 @@ use ESD\Yii\Helpers\ArrayHelper;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class Schema extends \yii\db\Schema implements ConstraintFinderInterface
+class Schema extends \ESD\Yii\Db\Schema implements ConstraintFinderInterface
 {
     use ConstraintFinderTrait;
 

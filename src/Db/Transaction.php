@@ -50,7 +50,7 @@ use ESD\Yii\Base\NotSupportedException;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class Transaction extends \yii\base\BaseObject
+class Transaction extends \ESD\Yii\Base\BaseObject
 {
     /**
      * A constant representing the transaction isolation level `READ UNCOMMITTED`.

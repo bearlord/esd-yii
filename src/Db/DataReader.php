@@ -48,7 +48,7 @@ use ESD\Yii\Base\InvalidCallException;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class DataReader extends \yii\base\BaseObject implements \Iterator, \Countable
+class DataReader extends \ESD\Yii\Base\BaseObject implements \Iterator, \Countable
 {
     /**
      * @var \PDOStatement the PDOStatement associated with the command
