@@ -13,6 +13,7 @@ use DI\Container;
 use ESD\Core\DI\DI;
 use ESD\Core\Server\Server;
 use ESD\Yii\Db\Connection;
+use ESD\Yii\PdoPlugin\PdoPools;
 
 class Application
 {
@@ -37,23 +38,19 @@ class Application
 
     public function getDb()
     {
-        $params = Server::$instance->getConfigContext()->get('esd-yii.db');
-
-        $containerKey = 'esd-yii.db';
-        $db = null;
-
-        //判断ESD的容器是否有connection对象
-        if (DI::getInstance()->getContainer()->has($containerKey)) {
-            $db = DI::getInstance()->getContainer()->get($containerKey);
+        $name = 'default';
+        $db = getContextValue("Pdo:$name");
+        if ($db == null) {
+            /** @var PdoPools $pdoPools */
+            $pdoPools = getDeepContextValueByClassName(PdoPools::class);
+            $pool = $pdoPools->getPool($name);
+            if ($pool == null) {
+                throw new PostgresqlException("No Pdo connection pool named {$name} was found");
+            }
+            return $pool->db();
+        } else {
             return $db;
         }
-
-        //如果容器没有connection对象，借由Yii容器创建，按key值存入ESD的容器
-        $db = Yii::createObject($params);
-        $db->open();
-        DI::getInstance()->getContainer()->set($containerKey, $db);
-
-        return $db;
     }
 
     /**

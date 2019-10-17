@@ -55,7 +55,7 @@ class PdoPlugin extends \ESD\Core\PlugIn\AbstractPlugin
      */
     public function beforeProcessStart(Context $context)
     {
-        $pools = new Pools();
+        $pools = new PdoPools();
 
         $configs = $this->configs->getConfigs();
         if (empty($configs)) {
@@ -64,10 +64,14 @@ class PdoPlugin extends \ESD\Core\PlugIn\AbstractPlugin
         }
 
         foreach ($configs as $key => $config) {
-            $pool = new Pool($config);
+            $pool = new PdoPool($config);
             $pools->addPool($pool);
             $this->debug(sprintf("已添加名为 %s 的 %s 连接池", $config->getName(), $config->getDriverName()));
         }
+
+        $context->add("PdoPool", $pools);
+        $this->setToDIContainer(PdoPools::class, $pools);
+        $this->setToDIContainer(PdoPool::class, $pools->getPool());
 
         $this->ready();
     }
