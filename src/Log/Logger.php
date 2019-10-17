@@ -5,9 +5,9 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\log;
+namespace ESD\Yii\Log;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Base\Component;
 
 /**

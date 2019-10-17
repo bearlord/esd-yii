@@ -8,7 +8,7 @@
 
 namespace ESD\Yii\Base;
 
-
+use ESD\Yii\Yii;
 use DI\Container;
 use ESD\Core\DI\DI;
 use ESD\Core\Server\Server;
@@ -18,9 +18,34 @@ use ESD\Yii\PdoPlugin\PdoPools;
 class Application
 {
     /**
+     * @var string the charset currently used for the application.
+     */
+    public $charset = 'UTF-8';
+    /**
+     * @var string the language that is meant to be used for end users. It is recommended that you
+     * use [IETF language tags](http://en.wikipedia.org/wiki/IETF_language_tag). For example, `en` stands
+     * for English, while `en-US` stands for English (United States).
+     * @see sourceLanguage
+     */
+    public $language = 'en-US';
+
+    /**
+     * @var string the language that the application is written in. This mainly refers to
+     * the language that the messages and view files are written in.
+     * @see language
+     */
+    public $sourceLanguage = 'en-US';
+
+    /**
      * @var static[] static instances in format: `[className => object]`
      */
     private static $_instances = [];
+
+    public function __construct()
+    {
+        Yii::$app = $this;
+        $this->preInit();
+    }
 
     /**
      * Returns static class instance, which can be used to obtain meta information.
@@ -34,6 +59,17 @@ class Application
             self::$_instances[$className] = Yii::createObject($className);
         }
         return self::$_instances[$className];
+    }
+
+    /**
+     * Prepare init
+     */
+    public function preInit()
+    {
+        $config = Server::$instance->getConfigContext()->get('esd-yii');
+        if (!empty($config['language'])) {
+            $this->language = $config['language'];
+        }
     }
 
     public function getDb()
@@ -60,7 +96,7 @@ class Application
     public function getI18n()
     {
         $i18n = Yii::createObject([
-            'class' => \ESD\Yii\i18n\I18N::class
+            'class' => \ESD\Yii\I18n\I18N::class
         ]);
 
         return $i18n;

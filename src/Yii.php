@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\Base;
+namespace ESD\Yii;
 
 /**
  * Yii is a helper class serving common framework functionalities.

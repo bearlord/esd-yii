@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Base;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 
 /**
  * BaseObject is the base class that implements the *property* feature.

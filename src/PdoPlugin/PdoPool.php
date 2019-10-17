@@ -4,7 +4,7 @@ namespace ESD\Yii\PdoPlugin;
 
 use ESD\Core\Channel\Channel;
 use ESD\Yii\Base\Application;
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Db\Connection;
 
 

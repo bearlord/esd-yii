@@ -5,9 +5,9 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\i18n;
+namespace ESD\Yii\I18n;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 
 /**
  * GettextPoFile represents a PO Gettext message file.

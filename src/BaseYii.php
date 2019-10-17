@@ -5,13 +5,14 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\Base;
+namespace ESD\Yii;
 
+use ESD\Yii\Base\Application;
 use ESD\Yii\Di\Container;
 use InvalidArgumentException;
 use InvalidConfigException;
 use UnknownClassException;
-use ESD\Yii\log\Logger;
+use ESD\Yii\Log\Logger;
 
 
 /**
@@ -34,7 +35,7 @@ class BaseYii
      */
     public static $classMap = [];
     /**
-     * @var \yii\console\Application|\yii\web\Application the application instance
+     * @var \yii\console\Application|\yii\web\Application|\ESD\Yii\Base\Application the application instance
      */
     public static $app;
     /**
@@ -492,6 +493,7 @@ class BaseYii
      */
     public static function t($category, $message, $params = [], $language = null)
     {
+
         if (static::$app !== null) {
             return Application::instance()->getI18n()->translate($category, $message, $params, $language ?: static::$app->language);
         }

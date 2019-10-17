@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Validators;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use yii\helpers\FileHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;

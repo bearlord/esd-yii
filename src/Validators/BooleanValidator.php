@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Validators;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 
 /**
  * BooleanValidator checks if the attribute value is a boolean value.

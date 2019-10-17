@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Validators;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 
 /**
  * StringValidator validates that the attribute value is of certain length.

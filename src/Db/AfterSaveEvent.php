@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db;
 
-use yii\base\Event;
+use ESD\Yii\Base\Event;
 
 /**
  * AfterSaveEvent represents the information available in [[ActiveRecord::EVENT_AFTER_INSERT]] and [[ActiveRecord::EVENT_AFTER_UPDATE]].

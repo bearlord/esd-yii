@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\i18n;
+namespace ESD\Yii\I18n;
 
 use Closure;
 use DateInterval;
@@ -14,7 +14,7 @@ use DateTimeInterface;
 use DateTimeZone;
 use IntlDateFormatter;
 use NumberFormatter;
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Base\Component;
 use yii\base\InvalidArgumentException;
 use ESD\Yii\Base\InvalidConfigException;

@@ -12,7 +12,7 @@ use ArrayIterator;
 use ArrayObject;
 use IteratorAggregate;
 use ReflectionClass;
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Helpers\Inflector;
 use ESD\Yii\Validators\RequiredValidator;
 use ESD\Yii\Validators\Validator;

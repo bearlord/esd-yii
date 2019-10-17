@@ -5,9 +5,9 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\i18n;
+namespace ESD\Yii\I18n;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Base\Component;
 use ESD\Yii\Base\InvalidConfigException;
 
@@ -59,15 +59,15 @@ class I18N extends Component
             $this->translations['yii'] = [
                 'class' => 'ESD\Yii\I18n\PhpMessageSource',
                 'sourceLanguage' => 'en-US',
-                'basePath' => '@yii/messages',
+                'basePath' => '@yii/Messages',
             ];
         }
 
         if (!isset($this->translations['app']) && !isset($this->translations['app*'])) {
             $this->translations['app'] = [
                 'class' => 'ESD\Yii\I18n\PhpMessageSource',
-                'sourceLanguage' => 'en-US',
-                'basePath' => '@app/messages',
+                'sourceLanguage' => Yii::$app->sourceLanguage,
+                'basePath' => '@app/Messages',
             ];
         }
     }
@@ -88,6 +88,7 @@ class I18N extends Component
     {
         $messageSource = $this->getMessageSource($category);
         $translation = $messageSource->translate($category, $message, $language);
+
         if ($translation === false) {
             return $this->format($message, $params, $messageSource->sourceLanguage);
         }

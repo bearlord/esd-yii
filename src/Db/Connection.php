@@ -11,7 +11,7 @@ use PDO;
 use ESD\Yii\Base\Component;
 use ESD\Yii\Base\InvalidConfigException;
 use League\Flysystem\NotSupportedException;
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 
 use yii\caching\CacheInterface;
 

@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Validators;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Base\Component;
 use ESD\Yii\Base\NotSupportedException;
 
@@ -478,7 +478,7 @@ class Validator extends Component
     protected function formatMessage($message, $params)
     {
         if (Yii::$app !== null) {
-            return \Yii::$app->getI18n()->format($message, $params, Yii::$app->language);
+            return Yii::$app->getI18n()->format($message, $params, Yii::$app->language);
         }
 
         $placeholders = [];

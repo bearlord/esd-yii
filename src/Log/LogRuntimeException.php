@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\log;
+namespace ESD\Yii\Log;
 
 /**
  * LogRuntimeException represents an exception caused by problems with log delivery.

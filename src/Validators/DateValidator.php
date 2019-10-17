@@ -9,7 +9,7 @@ namespace ESD\Yii\Validators;
 
 use DateTime;
 use IntlDateFormatter;
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Base\InvalidConfigException;
 use yii\helpers\FormatConverter;
 

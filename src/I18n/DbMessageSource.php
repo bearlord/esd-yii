@@ -5,9 +5,9 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\i18n;
+namespace ESD\Yii\I18n;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Base\InvalidConfigException;
 use yii\caching\CacheInterface;
 use ESD\Yii\Db\Connection;

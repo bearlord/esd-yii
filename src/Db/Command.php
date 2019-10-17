@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Db;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Base\Component;
 use ESD\Yii\Base\NotSupportedException;
 

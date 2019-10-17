@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Validators;
 
-use ESD\Yii\Base\Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Base\Model;
 use ESD\Yii\Db\ActiveQuery;
 use ESD\Yii\Db\ActiveQueryInterface;
