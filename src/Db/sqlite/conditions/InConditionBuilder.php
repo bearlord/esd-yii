@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\sqlite\conditions;
+namespace ESD\Yii\Db\Sqlite\conditions;
 
 use ESD\Yii\Base\NotSupportedException;
 

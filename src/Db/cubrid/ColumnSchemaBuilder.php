@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\cubrid;
+namespace ESD\Yii\Db\Cubrid;
 
 use ESD\Yii\Db\ColumnSchemaBuilder as AbstractColumnSchemaBuilder;
 

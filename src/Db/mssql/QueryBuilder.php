@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\mssql;
+namespace ESD\Yii\Db\Mssql;
 
 use yii\base\InvalidArgumentException;
 use ESD\Yii\Db\Constraint;

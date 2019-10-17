@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\oci;
+namespace ESD\Yii\Db\Oci;
 
 use ESD\Yii\Db\ColumnSchemaBuilder as AbstractColumnSchemaBuilder;
 

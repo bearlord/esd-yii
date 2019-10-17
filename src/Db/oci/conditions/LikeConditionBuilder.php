@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\oci\conditions;
+namespace ESD\Yii\Db\Oci\conditions;
 
 use ESD\Yii\Db\ExpressionInterface;
 

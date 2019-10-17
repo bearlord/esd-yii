@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\cubrid;
+namespace ESD\Yii\Db\Cubrid;
 
 use yii\base\InvalidArgumentException;
 use ESD\Yii\Base\NotSupportedException;

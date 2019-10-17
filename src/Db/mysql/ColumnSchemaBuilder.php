@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\mysql;
+namespace ESD\Yii\Db\Mysql;
 
 use ESD\Yii\Db\ColumnSchemaBuilder as AbstractColumnSchemaBuilder;
 

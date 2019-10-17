@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\oci;
+namespace ESD\Yii\Db\Oci;
 
 use yii\base\InvalidArgumentException;
 use ESD\Yii\Db\Connection;

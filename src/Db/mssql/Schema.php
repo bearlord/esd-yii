@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\mssql;
+namespace ESD\Yii\Db\Mssql;
 
 use ESD\Yii\Db\CheckConstraint;
 use ESD\Yii\Db\ColumnSchema;

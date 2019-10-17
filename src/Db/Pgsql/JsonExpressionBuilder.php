@@ -5,17 +5,18 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\Db\Mysql;
+namespace ESD\Yii\Db\Pgsql;
 
+use ESD\Yii\Db\ArrayExpression;
 use ESD\Yii\Db\ExpressionBuilderInterface;
 use ESD\Yii\Db\ExpressionBuilderTrait;
 use ESD\Yii\Db\ExpressionInterface;
 use ESD\Yii\Db\JsonExpression;
 use ESD\Yii\Db\Query;
-use yii\helpers\Json;
+use ESD\Yii\Helpers\Json;
 
 /**
- * Class JsonExpressionBuilder builds [[JsonExpression]] for MySQL DBMS.
+ * Class JsonExpressionBuilder builds [[JsonExpression]] for PostgreSQL DBMS.
  *
  * @author Dmytro Naumenko <d.naumenko.a@gmail.com>
  * @since 2.0.14
@@ -23,8 +24,6 @@ use yii\helpers\Json;
 class JsonExpressionBuilder implements ExpressionBuilderInterface
 {
     use ExpressionBuilderTrait;
-
-    const PARAM_PREFIX = ':qp';
 
 
     /**
@@ -37,12 +36,27 @@ class JsonExpressionBuilder implements ExpressionBuilderInterface
 
         if ($value instanceof Query) {
             list ($sql, $params) = $this->queryBuilder->build($value, $params);
-            return "($sql)";
+            return "($sql)" . $this->getTypecast($expression);
+        }
+        if ($value instanceof ArrayExpression) {
+            $placeholder = 'array_to_json(' . $this->queryBuilder->buildExpression($value, $params) . ')';
+        } else {
+            $placeholder = $this->queryBuilder->bindParam(Json::encode($value), $params);
         }
 
-        $placeholder = static::PARAM_PREFIX . count($params);
-        $params[$placeholder] = Json::encode($value);
+        return $placeholder . $this->getTypecast($expression);
+    }
 
-        return "CAST($placeholder AS JSON)";
+    /**
+     * @param JsonExpression $expression
+     * @return string the typecast expression based on [[type]].
+     */
+    protected function getTypecast(JsonExpression $expression)
+    {
+        if ($expression->getType() === null) {
+            return '';
+        }
+
+        return '::' . $expression->getType();
     }
 }

@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\sqlite;
+namespace ESD\Yii\Db\Sqlite;
 
 use yii\base\InvalidArgumentException;
 use ESD\Yii\Base\NotSupportedException;

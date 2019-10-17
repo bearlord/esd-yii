@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\sqlite;
+namespace ESD\Yii\Db\Sqlite;
 
 use ESD\Yii\Db\ColumnSchemaBuilder as AbstractColumnSchemaBuilder;
 

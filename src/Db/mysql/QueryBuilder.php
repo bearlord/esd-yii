@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\mysql;
+namespace ESD\Yii\Db\Mysql;
 
 use yii\base\InvalidArgumentException;
 use ESD\Yii\Base\NotSupportedException;

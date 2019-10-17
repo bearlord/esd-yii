@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\db\cubrid\conditions;
+namespace ESD\Yii\Db\Cubrid\conditions;
 
 /**
  * {@inheritdoc}

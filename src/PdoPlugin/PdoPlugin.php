@@ -6,6 +6,7 @@ use ESD\Core\Plugins\Logger\GetLogger;
 use ESD\Core\Server\Server;
 use ESD\Core\Context\Context;
 use ESD\Core\PlugIn\PluginInterfaceManager;
+use ESD\Yii\Base\Application;
 
 class PdoPlugin extends \ESD\Core\PlugIn\AbstractPlugin
 {
@@ -44,6 +45,7 @@ class PdoPlugin extends \ESD\Core\PlugIn\AbstractPlugin
             $config->setName($key);
             $this->configs->addConfig($config->buildFromArray($value));
         }
+        Application::instance();
     }
 
     /**
