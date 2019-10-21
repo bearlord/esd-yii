@@ -11,7 +11,7 @@ use ESD\Yii\Yii;
 use ESD\Yii\Helpers\FileHelper;
 use ESD\Yii\Helpers\Html;
 use ESD\Yii\Helpers\Json;
-use yii\web\JsExpression;
+use ESD\Yii\Web\JsExpression;
 use yii\web\UploadedFile;
 
 /**

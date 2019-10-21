@@ -12,7 +12,7 @@ use ESD\Yii\Base\InvalidConfigException;
 use ESD\Yii\Helpers\Html;
 use ESD\Yii\Helpers\IpHelper;
 use ESD\Yii\Helpers\Json;
-use yii\web\JsExpression;
+use ESD\Yii\Web\JsExpression;
 
 /**
  * The validator checks if the attribute value is a valid IPv4/IPv6 address or subnet.

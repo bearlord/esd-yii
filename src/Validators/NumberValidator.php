@@ -10,7 +10,7 @@ namespace ESD\Yii\Validators;
 use ESD\Yii\Yii;
 use ESD\Yii\Helpers\Json;
 use ESD\Yii\Helpers\StringHelper;
-use yii\web\JsExpression;
+use ESD\Yii\Web\JsExpression;
 
 /**
  * NumberValidator validates that the attribute value is a number.

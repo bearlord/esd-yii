@@ -9,8 +9,8 @@ namespace ESD\Yii\Base;
 
 use Yii;
 use ESD\Yii\Helpers\ArrayHelper;
-use yii\web\Link;
-use yii\web\Linkable;
+use ESD\Yii\Web\Link;
+use ESD\Yii\Web\Linkable;
 
 /**
  * ArrayableTrait provides a common implementation of the [[Arrayable]] interface.

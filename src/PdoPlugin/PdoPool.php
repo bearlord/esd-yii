@@ -49,6 +49,7 @@ class PdoPool
         $db->dsn = $config->getDsn();
         $db->username = $config->getUsername();
         $db->password = $config->getPassword();
+        $db->charset = $config->getCharset();
         $db->tablePrefix = $config->getTablePrefix();
         $db->open();
         return $db;

@@ -276,15 +276,15 @@ class Connection extends Component
      */
     public $schemaMap = [
         'pgsql' => 'ESD\Yii\Db\Pgsql\Schema', // PostgreSQL
-        'mysqli' => 'ESD\Yii\Db\mysql\Schema', // MySQL
-        'mysql' => 'ESD\Yii\Db\mysql\Schema', // MySQL
-        'sqlite' => 'ESD\Yii\Db\sqlite\Schema', // sqlite 3
-        'sqlite2' => 'ESD\Yii\Db\sqlite\Schema', // sqlite 2
-        'sqlsrv' => 'ESD\Yii\Db\mssql\Schema', // newer MSSQL driver on MS Windows hosts
-        'oci' => 'ESD\Yii\Db\oci\Schema', // Oracle driver
-        'mssql' => 'ESD\Yii\Db\mssql\Schema', // older MSSQL driver on MS Windows hosts
-        'dblib' => 'ESD\Yii\Db\mssql\Schema', // dblib drivers on GNU/Linux (and maybe other OSes) hosts
-        'cubrid' => 'ESD\Yii\Db\cubrid\Schema', // CUBRID
+        'mysqli' => 'ESD\Yii\Db\Mysql\Schema', // MySQL
+        'mysql' => 'ESD\Yii\Db\Mysql\Schema', // MySQL
+        'sqlite' => 'ESD\Yii\Db\Sqlite\Schema', // sqlite 3
+        'sqlite2' => 'ESD\Yii\Db\Sqlite\Schema', // sqlite 2
+        'sqlsrv' => 'ESD\Yii\Db\Mssql\Schema', // newer MSSQL driver on MS Windows hosts
+        'oci' => 'ESD\Yii\Db\Oci\Schema', // Oracle driver
+        'mssql' => 'ESD\Yii\Db\Mssql\Schema', // older MSSQL driver on MS Windows hosts
+        'dblib' => 'ESD\Yii\Db\Mssql\Schema', // dblib drivers on GNU/Linux (and maybe other OSes) hosts
+        'cubrid' => 'ESD\Yii\Db\Cubrid\Schema', // CUBRID
     ];
     /**
      * @var string Custom PDO wrapper class. If not set, it will use [[PDO]] or [[\yii\db\mssql\PDO]] when MSSQL is used.
@@ -675,7 +675,7 @@ class Connection extends Component
                 if ($driver === 'mssql' || $driver === 'dblib') {
                     $pdoClass = 'ESD\Yii\Db\Mssql\PDO';
                 } elseif ($driver === 'sqlsrv') {
-                    $pdoClass = '\'ESD\Yii\Db\Mssql\SqlsrvPDO';
+                    $pdoClass = 'ESD\Yii\Db\Mssql\SqlsrvPDO';
                 }
             }
         }
@@ -701,6 +701,7 @@ class Connection extends Component
         if ($this->emulatePrepare !== null && constant('PDO::ATTR_EMULATE_PREPARES')) {
             $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, $this->emulatePrepare);
         }
+
         if ($this->charset !== null && in_array($this->getDriverName(), ['pgsql', 'mysql', 'mysqli', 'cubrid'], true)) {
             $this->pdo->exec('SET NAMES ' . $this->pdo->quote($this->charset));
         }

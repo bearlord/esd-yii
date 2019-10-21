@@ -10,7 +10,7 @@ namespace ESD\Yii\Validators;
 use ESD\Yii\Yii;
 use ESD\Yii\Base\InvalidConfigException;
 use ESD\Yii\Helpers\Json;
-use yii\web\JsExpression;
+use ESD\Yii\Web\JsExpression;
 
 /**
  * EmailValidator validates that the attribute value is a valid email address.

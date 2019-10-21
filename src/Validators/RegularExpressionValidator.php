@@ -11,7 +11,7 @@ use ESD\Yii\Yii;
 use ESD\Yii\Base\InvalidConfigException;
 use ESD\Yii\Helpers\Html;
 use ESD\Yii\Helpers\Json;
-use yii\web\JsExpression;
+use ESD\Yii\Web\JsExpression;
 
 /**
  * RegularExpressionValidator validates that the attribute value matches the specified [[pattern]].

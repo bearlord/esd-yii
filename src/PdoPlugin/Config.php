@@ -219,7 +219,9 @@ class Config extends BaseConfig
         $self->setDsn($array['dsn']);
         $self->setUsername($array['username']);
         $self->setPassword($array['password']);
+        $self->setCharset($array['charset']);
         $self->setTablePrefix($array['tablePrefix']);
+        $self->setPoolMaxNumber($array['poolMaxNumber']);
         return $self;
     }
 

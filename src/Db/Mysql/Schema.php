@@ -32,7 +32,7 @@ class Schema extends \ESD\Yii\Db\Schema implements ConstraintFinderInterface
     /**
      * {@inheritdoc}
      */
-    public $columnSchemaClass = 'yii\db\mysql\ColumnSchema';
+    public $columnSchemaClass = 'ESD\Yii\Db\Mysql\ColumnSchema';
     /**
      * @var bool whether MySQL used is older than 5.1.
      */
