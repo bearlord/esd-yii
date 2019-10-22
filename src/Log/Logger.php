@@ -158,6 +158,7 @@ class Logger extends Component
             }
         }
         $this->messages[] = [$message, $level, $category, $time, $traces, memory_get_usage()];
+
         if ($this->flushInterval > 0 && count($this->messages) >= $this->flushInterval) {
             $this->flush();
         }
@@ -173,6 +174,7 @@ class Logger extends Component
         // https://github.com/yiisoft/yii2/issues/5619
         // new messages could be logged while the existing ones are being handled by targets
         $this->messages = [];
+
         if ($this->dispatcher instanceof Dispatcher) {
             $this->dispatcher->dispatch($messages, $final);
         }

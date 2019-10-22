@@ -96,7 +96,6 @@ class Dispatcher extends Component
     public function init()
     {
         parent::init();
-
         foreach ($this->targets as $name => $target) {
             if (!$target instanceof Target) {
                 $this->targets[$name] = Yii::createObject($target);
@@ -186,7 +185,7 @@ class Dispatcher extends Component
         foreach ($this->targets as $target) {
             if ($target->enabled) {
                 try {
-                    $target->collect($messages, $final);
+                    $r = $target->collect($messages, $final);
                 } catch (\Exception $e) {
                     $target->enabled = false;
                     $targetErrors[] = [

@@ -7,13 +7,14 @@
 
 namespace ESD\Yii\Log;
 
+
 /**
  * LogRuntimeException represents an exception caused by problems with log delivery.
  *
  * @author Bizley <pawel@positive.codes>
  * @since 2.0.14
  */
-class LogRuntimeException extends \yii\base\Exception
+class LogRuntimeException extends \ESD\Yii\Base\Exception
 {
     /**
      * @return string the user-friendly name of this exception

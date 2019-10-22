@@ -13,7 +13,7 @@ use ESD\Yii\Base\InvalidConfigException;
 use ESD\Yii\Helpers\ArrayHelper;
 use ESD\Yii\Helpers\StringHelper;
 use ESD\Yii\Helpers\VarDumper;
-use yii\web\Request;
+use ESD\Core\Server\Beans\Request;
 
 /**
  * Target is the base class for all log target classes.
@@ -113,7 +113,7 @@ abstract class Target extends Component
      * Defaults to 1000. Note that messages will always be exported when the application terminates.
      * Set this property to be 0 if you don't want to export messages until the application terminates.
      */
-    public $exportInterval = 1000;
+    public $exportInterval = 3;
     /**
      * @var array the messages that are retrieved from the logger so far by this log target.
      * Please refer to [[Logger::messages]] for the details about the message structure.
@@ -148,9 +148,10 @@ abstract class Target extends Component
     {
         $this->messages = array_merge($this->messages, static::filterMessages($messages, $this->getLevels(), $this->categories, $this->except));
         $count = count($this->messages);
+
         if ($count > 0 && ($final || $this->exportInterval > 0 && $count >= $this->exportInterval)) {
             if (($context = $this->getContextMessage()) !== '') {
-                $this->messages[] = [$context, Logger::LEVEL_INFO, 'application', YII_BEGIN_TIME];
+                $this->messages[] = [$context, Logger::LEVEL_INFO, 'application', ''];
             }
             // set exportInterval to 0 to avoid triggering export again while exporting
             $oldExportInterval = $this->exportInterval;
@@ -170,6 +171,7 @@ abstract class Target extends Component
     protected function getContextMessage()
     {
         $context = ArrayHelper::filter($GLOBALS, $this->logVars);
+
         foreach ($this->maskVars as $var) {
             if (ArrayHelper::getValue($context, $var) !== null) {
                 ArrayHelper::setValue($context, $var, '***');
@@ -334,7 +336,8 @@ abstract class Target extends Component
         }
 
         $request = Yii::$app->getRequest();
-        $ip = $request instanceof Request ? $request->getUserIP() : '-';
+
+        $ip = $request instanceof Request ? $request->getServer(Request::SERVER_REMOTE_ADDR) : '-';
 
         /* @var $user \yii\web\User */
         $user = Yii::$app->has('user', true) ? Yii::$app->get('user') : null;
@@ -348,6 +351,8 @@ abstract class Target extends Component
         $session = Yii::$app->has('session', true) ? Yii::$app->get('session') : null;
         $sessionID = $session && $session->getIsActive() ? $session->getId() : '-';
 
+
+        var_dump("[$ip][$userID][$sessionID]");
         return "[$ip][$userID][$sessionID]";
     }
 

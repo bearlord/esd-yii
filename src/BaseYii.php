@@ -9,11 +9,15 @@ namespace ESD\Yii;
 
 use ESD\Yii\Base\Application;
 use ESD\Yii\Di\Container;
-use InvalidArgumentException;
-use InvalidConfigException;
-use UnknownClassException;
+use ESD\Yii\Base\InvalidArgumentException;
+use ESD\Yii\Base\InvalidConfigException;
+use ESD\Yii\Base\UnknownClassException;
 use ESD\Yii\Log\Logger;
 
+/**
+ * This constant defines the framework installation directory.
+ */
+defined('YII2_PATH') or define('YII2_PATH', __DIR__);
 
 /**
  * BaseYii is the core helper class for the Yii framework.

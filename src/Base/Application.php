@@ -8,6 +8,8 @@
 
 namespace ESD\Yii\Base;
 
+use ESD\Core\Server\Beans\Request;
+use ESD\Yii\Di\ServiceLocator;
 use ESD\Yii\Yii;
 use DI\Container;
 use ESD\Core\DI\DI;
@@ -15,7 +17,7 @@ use ESD\Core\Server\Server;
 use ESD\Yii\Db\Connection;
 use ESD\Yii\PdoPlugin\PdoPools;
 
-class Application
+class Application extends ServiceLocator
 {
     /**
      * @var string the charset currently used for the application.
@@ -35,6 +37,11 @@ class Application
      * @see language
      */
     public $sourceLanguage = 'en-US';
+
+    /**
+     * @var string the root directory of the application.
+     */
+    private $_basePath;
 
     /**
      * @var static[] static instances in format: `[className => object]`
@@ -67,9 +74,82 @@ class Application
     public function preInit()
     {
         $config = Server::$instance->getConfigContext()->get('esd-yii');
-        if (!empty($config['language'])) {
-            $this->language = $config['language'];
+
+        $this->setBasePath(Server::$instance->getServerConfig()->getRootDir());
+
+        // merge core components with custom components
+        $newConfig = $config;
+        unset($newConfig['db']);
+
+        foreach ($this->coreComponents() as $id => $component) {
+            if (!isset($newConfig['components'][$id])) {
+                $newConfig['components'][$id] = $component;
+            } elseif (is_array($newConfig['components'][$id]) && !isset($newConfig['components'][$id]['class'])) {
+                $newConfig['components'][$id]['class'] = $component['class'];
+            }
         }
+        print_r($newConfig);
+        Component::__construct($newConfig);
+        unset($newConfig);
+        $this->getLog();
+    }
+
+    /**
+     * Returns the root directory of the module.
+     * It defaults to the directory containing the module class file.
+     * @return string the root directory of the module.
+     */
+    public function getBasePath()
+    {
+        if ($this->_basePath === null) {
+            $class = new \ReflectionClass($this);
+            $this->_basePath = dirname($class->getFileName());
+        }
+
+        return $this->_basePath;
+    }
+
+    /**
+     * Sets the root directory of the module.
+     * This method can only be invoked at the beginning of the constructor.
+     * @param string $path the root directory of the module. This can be either a directory name or a [path alias](guide:concept-aliases).
+     * @throws InvalidParamException if the directory does not exist.
+     */
+    public function setBasePath($path)
+    {
+        $path = Yii::getAlias($path);
+        $p = strncmp($path, 'phar://', 7) === 0 ? $path : realpath($path);
+        if ($p !== false && is_dir($p)) {
+            $this->_basePath = $p;
+        } else {
+            throw new InvalidParamException("The directory does not exist: $path");
+        }
+    }
+
+    private $_runtimePath;
+
+    /**
+     * Returns the directory that stores runtime files.
+     * @return string the directory that stores runtime files.
+     * Defaults to the "runtime" subdirectory under [[basePath]].
+     */
+    public function getRuntimePath()
+    {
+        if ($this->_runtimePath === null) {
+            $this->setRuntimePath($this->getBasePath() . DIRECTORY_SEPARATOR . 'runtime');
+        }
+
+        return $this->_runtimePath;
+    }
+
+    /**
+     * Sets the directory that stores runtime files.
+     * @param string $path the directory that stores runtime files.
+     */
+    public function setRuntimePath($path)
+    {
+        $this->_runtimePath = Yii::getAlias($path);
+        Yii::setAlias('@runtime', $this->_runtimePath);
     }
 
     public function getDb()
@@ -90,6 +170,25 @@ class Application
     }
 
     /**
+     * Returns the log dispatcher component.
+     * @return \yii\log\Dispatcher the log dispatcher application component.
+     */
+    public function getLog()
+    {
+        return $this->get('log');
+    }
+
+    /**
+     * Returns the request component.
+     * @return \yii\web\Request|\yii\console\Request | \ESD\Core\Server\Beans\Request the request component.
+     */
+    public function getRequest()
+    {
+        $request = getDeepContextValueByClassName(Request::class);
+        return $request;
+    }
+
+    /**
      * Returns the internationalization (i18n) component
      * @return \ESD\Yii\I18n\I18N the internationalization application component.
      */
@@ -100,5 +199,18 @@ class Application
         ]);
 
         return $i18n;
+    }
+
+
+    /**
+     * Returns the configuration of core application components.
+     * @see set()
+     */
+    public function coreComponents()
+    {
+        return [
+            'i18n' => ['class' => 'ESD\Yii\I18n\I18N'],
+            'log' => ['class' => 'ESD\Yii\Log\Dispatcher'],
+        ];
     }
 }

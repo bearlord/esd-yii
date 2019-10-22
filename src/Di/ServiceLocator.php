@@ -8,7 +8,7 @@
 namespace ESD\Yii\Di;
 
 use Closure;
-use Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Base\Component;
 use ESD\Yii\Base\InvalidConfigException;
 
