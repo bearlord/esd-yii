@@ -16,6 +16,7 @@ use ESD\Yii\Yii;
 use ESD\Yii\Helpers\Inflector;
 use ESD\Yii\Validators\RequiredValidator;
 use ESD\Yii\Validators\Validator;
+use ESD\Core\Server\Server;
 
 /**
  * Model is the base class for data models.
@@ -756,7 +757,8 @@ class Model extends Component implements StaticInstanceInterface, IteratorAggreg
      */
     public function onUnsafeAttribute($name, $value)
     {
-        if (YII_DEBUG) {
+        $debug = Server::$instance->getConfigContext()->get('esd-yii.debug');
+        if ($debug) {
             Yii::debug("Failed to set unsafe attribute '$name' in '" . get_class($this) . "'.", __METHOD__);
         }
     }

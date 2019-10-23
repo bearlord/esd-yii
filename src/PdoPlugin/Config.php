@@ -202,6 +202,7 @@ class Config extends BaseConfig
     {
         return [
             'dsn' => $this->dsn,
+            'name' => $this->name,
             'username' => $this->username,
             'password' => $this->password,
             'tablePrefix' => $this->tablePrefix,

@@ -152,7 +152,11 @@ class Application extends ServiceLocator
         Yii::setAlias('@runtime', $this->_runtimePath);
     }
 
-    public function getDb()
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function getDb($name = 'default')
     {
         $name = 'default';
         $db = getContextValue("Pdo:$name");

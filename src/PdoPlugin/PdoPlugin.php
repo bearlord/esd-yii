@@ -39,12 +39,24 @@ class PdoPlugin extends \ESD\Core\PlugIn\AbstractPlugin
      */
     public function beforeServerStart(Context $context)
     {
-        $configs = Server::$instance->getConfigContext()->get('esd-yii.db.default');
-        foreach ($configs as $key => $value) {
-            $config = new Config();
-            $config->setName($key);
-            $this->configs->addConfig($config->buildFromArray($value));
+        $configs = Server::$instance->getConfigContext()->get("esd-yii.db");
+
+        foreach ($configs as $key => $config) {
+            $configObject = new Config();
+            $configObject->setName($key);
+            $this->configs->addConfig($configObject->buildFromConfig($config));
+
+            $slaveConfigs = $this->getSlaveConfigs($config);
+            if (!empty($slaveConfigs)) {
+                foreach ($slaveConfigs as $slaveKey => $slaveConfig) {
+                    $slaveConfigObject = new Config();
+                    $slaveConfigObject->setName(sprintf("%s.slave.%s", $key, $slaveKey));
+                    $this->configs->addConfig($slaveConfigObject->buildFromConfig($slaveConfig));
+                }
+            }
         }
+
+
         Application::instance();
     }
 
@@ -78,8 +90,60 @@ class PdoPlugin extends \ESD\Core\PlugIn\AbstractPlugin
         $this->ready();
     }
 
+    /**
+     * @param PluginInterfaceManager $pluginInterfaceManager
+     * @return mixed|void
+     */
     public function onAdded(PluginInterfaceManager $pluginInterfaceManager)
     {
         parent::onAdded($pluginInterfaceManager);
+    }
+
+    /**
+     * @param $config
+     * @return array|bool
+     */
+    protected function getMasterConfigs($config)
+    {
+        if (empty($config['masters'])) {
+            return false;
+        }
+        if (empty($config['masterConfig'])) {
+            return false;
+        }
+        $row = [];
+        foreach ($config['masters'] as $k => $v) {
+            $v['username'] = $config['masterConfig']['username'];
+            $v['password'] = $config['masterConfig']['password'];
+            $v['poolMaxNumber'] = $config['masterConfig']['poolMaxNumber'];
+            $v['charset'] = $config['charset'];
+            $v['tablePrefix'] = $config['tablePrefix'];
+            $row[] = $v;
+        }
+        return $row;
+    }
+
+    /**
+     * @param $config
+     * @return array|bool
+     */
+    protected function getSlaveConfigs($config)
+    {
+        if (empty($config['slaves'])) {
+            return false;
+        }
+        if (empty($config['slaveConfig'])) {
+            return false;
+        }
+        $row = [];
+        foreach ($config['slaves'] as $k => $v) {
+            $v['username'] = $config['slaveConfig']['username'];
+            $v['password'] = $config['slaveConfig']['password'];
+            $v['poolMaxNumber'] = $config['slaveConfig']['poolMaxNumber'];
+            $v['charset'] = $config['charset'];
+            $v['tablePrefix'] = $config['tablePrefix'];
+            $row [] = $v;
+        }
+        return $row;
     }
 }
