@@ -9,6 +9,7 @@
 namespace ESD\Yii\Base;
 
 use ESD\Core\Server\Beans\Request;
+use ESD\Plugins\Session\HttpSession;
 use ESD\Yii\Di\ServiceLocator;
 use ESD\Yii\Yii;
 use DI\Container;
@@ -205,6 +206,15 @@ class Application extends ServiceLocator
         return $i18n;
     }
 
+    public function getSession()
+    {
+        $session = getDeepContextValueByClassName(HttpSession::class);
+        if ($session == null) {
+            $session = new HttpSession();
+        }
+        return $session;
+    }
+
 
     /**
      * Returns the configuration of core application components.
@@ -215,6 +225,7 @@ class Application extends ServiceLocator
         return [
             'i18n' => ['class' => 'ESD\Yii\I18n\I18N'],
             'log' => ['class' => 'ESD\Yii\Log\Dispatcher'],
+            'security' => ['class' => 'ESD\Yii\Base\Security']
         ];
     }
 }
