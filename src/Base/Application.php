@@ -9,6 +9,7 @@
 namespace ESD\Yii\Base;
 
 use ESD\Core\Server\Beans\Request;
+use ESD\Core\Server\Beans\Response;
 use ESD\Plugins\Session\HttpSession;
 use ESD\Yii\Di\ServiceLocator;
 use ESD\Yii\Yii;
@@ -18,6 +19,14 @@ use ESD\Core\Server\Server;
 use ESD\Yii\Db\Connection;
 use ESD\Yii\PdoPlugin\PdoPools;
 
+/**
+ * Class Application
+ * @package \ESD\Yii\Base
+ * @property \ESD\Core\Server\Beans\Request $request The request component. This property is read-only.
+ * @property \ESD\Core\Server\Beans\Response $response The response component. This property is read-only.
+ * @property \ESD\Plugins\Session\HttpSession $session The session component. This property is read-only.
+ * @property \ESD\Yii\Web\User $user The user component. This property is read-only.
+ */
 class Application extends ServiceLocator
 {
     /**
@@ -194,6 +203,16 @@ class Application extends ServiceLocator
     }
 
     /**
+     * Returns the response component.
+     * @return \yii\web\Response|\yii\console\Response | \ESD\Core\Server\Beans\Response the response component.
+     */
+    public function getResponse()
+    {
+        $response = getDeepContextValueByClassName(Response::class);
+        return $response;
+    }
+
+    /**
      * Returns the internationalization (i18n) component
      * @return \ESD\Yii\I18n\I18N the internationalization application component.
      */
@@ -206,6 +225,10 @@ class Application extends ServiceLocator
         return $i18n;
     }
 
+    /**
+     * Returns the session component.
+     * @return HttpSession the session component.
+     */
     public function getSession()
     {
         $session = getDeepContextValueByClassName(HttpSession::class);

@@ -7,6 +7,7 @@
 
 namespace ESD\Yii\Web;
 
+use ESD\Core\Server\Beans\Http\Cookie;
 use ESD\Yii\Yii;
 use ESD\Yii\Base\Component;
 use ESD\Yii\Base\InvalidConfigException;
@@ -563,16 +564,12 @@ class User extends Component
      */
     protected function sendIdentityCookie($identity, $duration)
     {
-        $cookie = Yii::createObject(array_merge($this->identityCookie, [
-            'class' => 'yii\web\Cookie',
-            'value' => json_encode([
-                $identity->getId(),
-                $identity->getAuthKey(),
-                $duration,
-            ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
-            'expire' => time() + $duration,
-        ]));
-        Yii::$app->getResponse()->getCookies()->add($cookie);
+        $cookie = new Cookie($this->identityCookie['name'], json_encode([
+            $identity->getId(),
+            $identity->getAuthKey(),
+            $duration,
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), time() + $duration);
+        Yii::$app->getResponse()->withCookie($cookie);
     }
 
     /**
