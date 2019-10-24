@@ -13,6 +13,7 @@ use ESD\Yii\Base\InvalidArgumentException;
 use ESD\Yii\Base\InvalidConfigException;
 use ESD\Yii\Base\UnknownClassException;
 use ESD\Yii\Log\Logger;
+use ESD\Core\Server\Server;
 
 /**
  * This constant defines the framework installation directory.
@@ -366,7 +367,8 @@ class BaseYii
      */
     public static function debug($message, $category = 'application')
     {
-        if (YII_DEBUG) {
+        $debug = Server::$instance->getConfigContext()->get('esd-yii.debug');
+        if ($debug) {
             static::getLogger()->log($message, Logger::LEVEL_TRACE, $category);
         }
     }

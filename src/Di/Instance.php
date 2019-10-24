@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Di;
 
-use Yii;
+use ESD\Yii\Yii;
 use ESD\Yii\Base\InvalidConfigException;
 
 /**
