@@ -85,7 +85,7 @@ class DbCache extends Cache
     public function init()
     {
         parent::init();
-        $this->db = Instance::ensure($this->db, Connection::className());
+        $this->db = Yii::$app->getDb();
     }
 
     /**
