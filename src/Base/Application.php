@@ -25,6 +25,7 @@ use ESD\Yii\PdoPlugin\PdoPools;
  * @property \ESD\Core\Server\Beans\Request $request The request component. This property is read-only.
  * @property \ESD\Core\Server\Beans\Response $response The response component. This property is read-only.
  * @property \ESD\Plugins\Session\HttpSession $session The session component. This property is read-only.
+ * @property \ESD\Yii\Base\Security $security The session component. This property is read-only.
  * @property \ESD\Yii\Web\User $user The user component. This property is read-only.
  * @property \ESD\Yii\Caching\Cache $cache The cache application component. Null if the component is not enabled.
  */
@@ -53,6 +54,10 @@ class Application extends ServiceLocator
      * @var string the root directory of the application.
      */
     private $_basePath;
+
+    public $cookieValidationKey;
+
+    public $enableCsrfValidation;
 
     /**
      * @var static[] static instances in format: `[className => object]`
@@ -239,6 +244,14 @@ class Application extends ServiceLocator
         return $session;
     }
 
+    /**
+     * Returns the security component.
+     * @return \yii\base\Security | \ESD\Yii\Base\Security the security application component.
+     */
+    public function getSecurity()
+    {
+        return $this->get('security');
+    }
 
     /**
      * Returns the configuration of core application components.

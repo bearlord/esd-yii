@@ -7,13 +7,13 @@
 
 namespace ESD\Yii\Helpers;
 
-use Yii;
+use ESD\Core\Server\Beans\Request;
+use ESD\Yii\Yii;
 
 use ESD\Helpers\Base\InvalidArgumentException;
 use ESD\Yii\Base\Model;
 use ESD\Yii\Db\ActiveRecordInterface;
 use ESD\Yii\Validators\StringValidator;
-use yii\web\Request;
 
 /**
  * BaseHtml provides concrete implementation for [[Html]].
@@ -291,6 +291,23 @@ class BaseHtml
         }
 
         return "<!--[if $condition]>\n" . $content . "\n<![endif]-->";
+    }
+
+
+    /**
+     * Generates the meta tags containing CSRF token information.
+     * @return string the generated meta tags
+     * @see Request::enableCsrfValidation
+     */
+    public static function csrfMetaTags()
+    {
+        $request = Yii::$app->getRequest();
+        if ($request instanceof Request && Yii::$app->enableCsrfValidation) {
+            return static::tag('meta', '', ['name' => 'csrf-param', 'content' => RequestExtra::instance()->csrfParam]) . "\n    "
+                . static::tag('meta', '', ['name' => 'csrf-token', 'content' => RequestExtra::instance()->getCsrfToken()]) . "\n";
+        } else {
+            return '';
+        }
     }
 
     /**

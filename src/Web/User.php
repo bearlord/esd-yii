@@ -8,6 +8,8 @@
 namespace ESD\Yii\Web;
 
 use ESD\Core\Server\Beans\Http\Cookie;
+use ESD\Core\Server\Beans\Request;
+use ESD\Yii\Helpers\RequestExtra;
 use ESD\Yii\Yii;
 use ESD\Yii\Base\Component;
 use ESD\Yii\Base\InvalidConfigException;
@@ -312,7 +314,7 @@ class User extends Component
      * This method attempts to log in a user using the ID and authKey information
      * provided by the [[identityCookie|identity cookie]].
      */
-    protected function loginByCookie()
+    public function loginByCookie()
     {
         $data = $this->getIdentityAndDurationFromCookie();
         if (isset($data['identity'], $data['duration'])) {
@@ -321,7 +323,7 @@ class User extends Component
             if ($this->beforeLogin($identity, true, $duration)) {
                 $this->switchIdentity($identity, $this->autoRenewCookie ? $duration : 0);
                 $id = $identity->getId();
-                $ip = Yii::$app->getRequest()->getUserIP();
+                $ip = Yii::$app->getRequest()->getServer(Request::SERVER_REMOTE_ADDR);
                 Yii::info("User '$id' logged in from $ip via cookie.", __METHOD__);
                 $this->afterLogin($identity, true, $duration);
             }
@@ -342,7 +344,7 @@ class User extends Component
         if ($identity !== null && $this->beforeLogout($identity)) {
             $this->switchIdentity(null);
             $id = $identity->getId();
-            $ip = Yii::$app->getRequest()->getUserIP();
+            $ip = Yii::$app->getRequest()->getServer(Request::SERVER_REMOTE_ADDR);
             Yii::info("User '$id' logged out from $ip.", __METHOD__);
             if ($destroySession && $this->enableSession) {
                 Yii::$app->getSession()->destroy();
@@ -390,15 +392,8 @@ class User extends Component
     public function getReturnUrl($defaultUrl = null)
     {
         $url = Yii::$app->getSession()->get($this->returnUrlParam, $defaultUrl);
-        if (is_array($url)) {
-            if (isset($url[0])) {
-                return Yii::$app->getUrlManager()->createUrl($url);
-            }
 
-            $url = null;
-        }
-
-        return $url === null ? Yii::$app->getHomeUrl() : $url;
+        return $url;
     }
 
     /**
@@ -442,7 +437,7 @@ class User extends Component
         $request = Yii::$app->getRequest();
         $canRedirect = !$checkAcceptHeader || $this->checkRedirectAcceptable();
         if ($this->enableSession
-            && $request->getIsGet()
+            && ($request->getMethod() == 'get')
             && (!$checkAjax || !$request->getIsAjax())
             && $canRedirect
         ) {
@@ -539,7 +534,10 @@ class User extends Component
     protected function renewIdentityCookie()
     {
         $name = $this->identityCookie['name'];
-        $value = Yii::$app->getRequest()->getCookies()->getValue($name);
+        $cookieParams = Yii::$app->getRequest()->getCookieParams();
+
+        $value = !empty($cookieParams[$name]) ? $cookieParams[$name] : null;
+
         if ($value !== null) {
             $data = json_decode($value, true);
             if (is_array($data) && isset($data[2])) {
@@ -564,11 +562,17 @@ class User extends Component
      */
     protected function sendIdentityCookie($identity, $duration)
     {
-        $cookie = new Cookie($this->identityCookie['name'], json_encode([
+        $validationKey = Yii::$app->cookieValidationKey;
+
+        $cookieValue = json_encode([
             $identity->getId(),
             $identity->getAuthKey(),
             $duration,
-        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), time() + $duration);
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+        $hashData = Yii::$app->getSecurity()->hashData(serialize([$this->identityCookie['name'], $cookieValue]), $validationKey);
+
+        $cookie = new Cookie($this->identityCookie['name'], $hashData, time() + $duration);
         Yii::$app->getResponse()->withCookie($cookie);
     }
 
@@ -582,11 +586,23 @@ class User extends Component
      */
     protected function getIdentityAndDurationFromCookie()
     {
-        $value = Yii::$app->getRequest()->getCookies()->getValue($this->identityCookie['name']);
+        $cookieParams = Yii::$app->getRequest()->getCookieParams();
+
+        $value = array_key_exists($this->identityCookie['name'], $cookieParams) ? $cookieParams[$this->identityCookie['name']] : null;
         if ($value === null) {
             return null;
         }
-        $data = json_decode($value, true);
+
+        $validateData = Yii::$app->getSecurity()->validateData($value, Yii::$app->cookieValidationKey);
+        if (!$validateData) {
+            return null;
+        }
+
+        $unserializeData = @unserialize($validateData);
+        if (is_array($unserializeData) && isset($unserializeData[0], $unserializeData[1]) && $unserializeData[0] === $this->identityCookie['name']) {
+            $data = json_decode($unserializeData[1], true);
+        }
+
         if (is_array($data) && count($data) == 3) {
             list($id, $authKey, $duration) = $data;
             /* @var $class IdentityInterface */
@@ -613,10 +629,16 @@ class User extends Component
      */
     protected function removeIdentityCookie()
     {
-        return true;
-        Yii::$app->getResponse()->getCookies()->remove(Yii::createObject(array_merge($this->identityCookie, [
-            'class' => 'yii\web\Cookie',
-        ])));
+        $cookieParams = Yii::$app->getRequest()->getCookieParams();
+        if (array_key_exists($this->identityCookie['name'], $cookieParams)) {
+            unset($cookieParams[$this->identityCookie['name']]);
+        }
+        if (!empty($cookieParams)) {
+            foreach ($cookieParams as $k => $v) {
+                Yii::$app->getResponse()->withCookie(new Cookie($k, $v));
+            }
+        }
+
     }
 
     /**
@@ -679,7 +701,7 @@ class User extends Component
     protected function renewAuthStatus()
     {
         $session = Yii::$app->getSession();
-        $id = $session->getHasSessionId() || $session->getIsActive() ? $session->get($this->idParam) : null;
+        $id = $session->getId() || $session->invalidate() ? $session->getAttribute($this->idParam) : null;
 
         if ($id === null) {
             $identity = null;
@@ -753,7 +775,8 @@ class User extends Component
      */
     protected function checkRedirectAcceptable()
     {
-        $acceptableTypes = Yii::$app->getRequest()->getAcceptableContentTypes();
+        $acceptableTypes = Yii::$app->getRequest()->getHeader(Request::HEADER_ACCEPT);
+        $acceptableTypes = (new RequestExtra())->getAcceptableContentTypes();
         if (empty($acceptableTypes) || count($acceptableTypes) === 1 && array_keys($acceptableTypes)[0] === '*/*') {
             return true;
         }
