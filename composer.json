@@ -2,6 +2,7 @@
     "name": "bearlord/esd-yii",
     "description": "esd-yii",
     "type": "library",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Zhenqiang.Zhang",
