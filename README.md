@@ -53,6 +53,12 @@ CSRF TOKEN部分，迁移过来，未完全测试通过。[v0.1]，前后端分�
 
 
 
+用法：
+
+```
+composer require bearlord/esd-yii
+```
+
 
 
 ## 用法：
@@ -109,11 +115,7 @@ esd-yii:
           - trace
 
     cache:
-#      class: 'ESD\Yii\Redis\Cache'
-#      redis:
-#        database: 2
-      class: 'ESD\Yii\Caching\ZendDataCache'
-
+      class: 'ESD\Yii\Redis\Cache'
 
     admin:
       class: 'ESD\Yii\Web\User'
