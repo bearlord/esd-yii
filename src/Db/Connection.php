@@ -1014,9 +1014,8 @@ class Connection extends Component
         }
 
         if ($this->_slave === false) {
-            $this->_slave = $this->openFromPool($this->slaves, $this->slaveConfig);
+            $this->_slave = Yii::$app->getDb('slave');
         }
-
         return $this->_slave === null && $fallbackToMaster ? $this : $this->_slave;
     }
 
@@ -1029,9 +1028,7 @@ class Connection extends Component
     public function getMaster()
     {
         if ($this->_master === false) {
-            $this->_master = $this->shuffleMasters
-                ? $this->openFromPool($this->masters, $this->masterConfig)
-                : $this->openFromPoolSequentially($this->masters, $this->masterConfig);
+            $this->_master = Yii::$app->getDb('master');
         }
 
         return $this->_master;

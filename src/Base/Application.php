@@ -172,16 +172,33 @@ class Application extends ServiceLocator
      * @param string $name
      * @return mixed
      */
-    public function getDb($name = 'default')
+    public function getDb($name = "default")
     {
-        $name = 'default';
-        $db = getContextValue("Pdo:$name");
+        if ($name === "default") {
+            $poolKey = "default";
+            $contextKey = "Pdo:default";
+        } elseif ($name === "slave") {
+            $slaveConfigs = Server::$instance->getConfigContext()->get('esd-yii.db.default.slaves');
+            $slaveRandKey = array_rand($slaveConfigs);
+
+            $poolKey = sprintf("default.slave.%s", $slaveRandKey);
+            $contextKey = sprintf("Pdo:default.slave.%s", $slaveRandKey);
+        } elseif ($name === "master") {
+            $masterConfigs = Server::$instance->getConfigContext()->get('esd-yii.db.default.masters');
+            $masterRandKey = array_rand($masterConfigs);
+
+            $poolKey = sprintf("default.master.%s", $masterRandKey);
+            $contextKey = sprintf("Pdo:default.master.%s", $masterRandKey);
+        }
+
+        $db = getContextValue($contextKey);
         if ($db == null) {
             /** @var PdoPools $pdoPools */
             $pdoPools = getDeepContextValueByClassName(PdoPools::class);
-            $pool = $pdoPools->getPool($name);
+            $pool = $pdoPools->getPool($poolKey);
+
             if ($pool == null) {
-                throw new PostgresqlException("No Pdo connection pool named {$name} was found");
+                throw new \PDOException("No Pdo connection pool named {$poolKey} was found");
             }
             return $pool->db();
         } else {
@@ -224,11 +241,7 @@ class Application extends ServiceLocator
      */
     public function getI18n()
     {
-        $i18n = Yii::createObject([
-            'class' => \ESD\Yii\I18n\I18N::class
-        ]);
-
-        return $i18n;
+        return $this->get('i18n');
     }
 
     /**

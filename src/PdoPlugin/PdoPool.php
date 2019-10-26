@@ -61,13 +61,14 @@ class PdoPool
      */
     public function db()
     {
-        $db = getContextValue("Pdo:{$this->getConfig()->getName()}");
+        $contextKey = "Pdo:{$this->getConfig()->getName()}";
+        $db = getContextValue($contextKey);
         if ($db == null) {
             $db = $this->pool->pop();
             defer(function () use ($db) {
                 $this->pool->push($db);
             });
-            setContextValue("Pdo:{$this->getConfig()->getName()}", $db);
+            setContextValue("Pdo:{$contextKey}", $db);
         }
         return $db;
     }

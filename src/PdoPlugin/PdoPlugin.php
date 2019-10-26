@@ -54,6 +54,15 @@ class PdoPlugin extends \ESD\Core\PlugIn\AbstractPlugin
                     $this->configs->addConfig($slaveConfigObject->buildFromConfig($slaveConfig));
                 }
             }
+
+            $masterConfigs = $this->getMasterConfigs($config);
+            if (!empty($masterConfigs)) {
+                foreach ($masterConfigs as $masterKey => $masterConfig) {
+                    $masterConfigObject = new Config();
+                    $masterConfigObject->setName(sprintf("%s.master.%s", $key, $slaveKey));
+                    $this->configs->addConfig($masterConfigObject->buildFromConfig($masterConfigs));
+                }
+            }
         }
 
 

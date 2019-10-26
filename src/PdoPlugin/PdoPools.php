@@ -26,18 +26,4 @@ class PdoPools
     {
         $this->poolList[$pool->getConfig()->getName()] = $pool;
     }
-
-    /**
-     * @return PostgresDb
-     * @throws PostgresqlException
-     * @throws \ESD\BaseServer\Exception
-     */
-    public function db()
-    {
-        $default = $this->getPool();
-        if ($default == null) {
-            throw new Exception("没有设置默认的PDO");
-        }
-        return $this->getPool()->db();
-    }
 }

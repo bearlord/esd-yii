@@ -12,8 +12,8 @@ use ESD\Yii\Base\Component;
 use ESD\Yii\Base\InvalidArgumentException;
 use ESD\Yii\Helpers\ArrayHelper;
 use ESD\Yii\Base\InvalidConfigException;
+use ESD\Yii\Yii;
 
-use Yii;
 
 /**
  * Query represents a SELECT SQL statement in a way that is independent of DBMS.
@@ -143,7 +143,7 @@ class Query extends Component implements QueryInterface, ExpressionInterface
     public function createCommand($db = null)
     {
         if ($db === null) {
-            $db = Application::instance()->getDb();
+            $db = Yii::$app->getDb();
         }
 
         list($sql, $params) = $db->getQueryBuilder()->build($this);
