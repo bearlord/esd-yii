@@ -9,7 +9,7 @@ esd-yii是ESD【EasySwooleDistributed】的一个扩展、包含了pdo的plugin�
 
 包含：Connection、Query、Model、ActiveRecord、Validator、I18n、 helpers、 Di、Component、Logger、Sectuirty、Cache、Redis、User、Identity、behaviors、events。
 
-未包含内容：Request、Response、Controller、Router、View、data、Cookie、Session、Asset、Console、data、ErrorHandle、migrations等。
+未包含内容：Request、Response、Controller、Router、View、data、Cookie、Session、Asset、Console、ErrorHandle、migrations等。
 
 
 
