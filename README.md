@@ -109,10 +109,9 @@ esd-yii:
           - trace
 
     cache:
-#      class: 'ESD\Yii\Redis\Cache'
-#      redis:
-#        database: 2
-      class: 'ESD\Yii\Caching\ZendDataCache'
+      class: 'ESD\Yii\Redis\Cache'
+      redis:
+        database: 2
 
 
     admin:
@@ -253,7 +252,7 @@ public function validate()
 
 ### 4. 多语言
 
-通过配置文件 resources/application-local.yml，esd-yii2的language可实现语言，用法、提示语与Yii2一样，未做修改。
+通过配置文件 resources/application-local.yml，esd-yii2的language可实现多语言，用法、提示语与Yii2一样，未做修改。
 
 
 
