@@ -7,9 +7,9 @@
 
 namespace ESD\Yii\Helpers;
 
-use ESD\Helpers\Base\Arrayable;
-use ESD\Helpers\Base\InvalidArgumentException;
-use ESD\Helpers\Base\JsExpression;
+use ESD\Yii\Base\Arrayable;
+use ESD\Yii\Base\InvalidArgumentException;
+use ESD\Yii\Base\JsExpression;
 
 /**
  * BaseJson provides concrete implementation for [[Json]].

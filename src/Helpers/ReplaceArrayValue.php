@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Helpers;
 
-use ESD\Helpers\Base\InvalidConfigException;
+use ESD\Yii\Base\InvalidConfigException;
 
 /**
  * Object that represents the replacement of array value while performing [[ArrayHelper::merge()]].

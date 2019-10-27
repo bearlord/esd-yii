@@ -8,7 +8,7 @@
 namespace ESD\Yii\Helpers;
 
 
-use ESD\Helpers\Base\InvalidArgumentException;
+use ESD\Yii\Base\InvalidArgumentException;
 use ESD\Core\Server\Server;
 
 /**

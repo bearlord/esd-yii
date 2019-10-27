@@ -7,8 +7,8 @@
 
 namespace ESD\Yii\Helpers;
 
-use ESD\Helpers\Base\Arrayable;
-use ESD\Helpers\Base\InvalidArgumentException;
+use ESD\Yii\Base\Arrayable;
+use ESD\Yii\Base\InvalidArgumentException;
 
 /**
  * BaseVarDumper provides concrete implementation for [[VarDumper]].

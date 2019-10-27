@@ -7,11 +7,11 @@
 
 namespace ESD\Yii\Helpers;
 
-use ESD\Helpers\Base\Exception;
+use ESD\Yii\Base\Exception;
 use Yii;
-use ESD\Helpers\Base\ErrorException;
-use ESD\Helpers\Base\InvalidArgumentException;
-use ESD\Helpers\Base\InvalidConfigException;
+use ESD\Yii\Base\ErrorException;
+use ESD\Yii\Base\InvalidArgumentException;
+use ESD\Yii\Base\InvalidConfigException;
 
 /**
  * BaseFileHelper provides concrete implementation for [[FileHelper]].
