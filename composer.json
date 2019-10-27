@@ -15,6 +15,7 @@
         "ezyang/htmlpurifier": "^4.10.0",
         "cebe/markdown": "^1.2.1"
     },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "ESD\\Yii\\": "src/"
