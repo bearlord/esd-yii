@@ -25,7 +25,6 @@ use ESD\Yii\PdoPlugin\PdoPools;
  * @property \ESD\Core\Server\Beans\Request $request The request component. This property is read-only.
  * @property \ESD\Core\Server\Beans\Response $response The response component. This property is read-only.
  * @property \ESD\Plugins\Session\HttpSession $session The session component. This property is read-only.
- * @property \ESD\Yii\Base\Security $security The session component. This property is read-only.
  * @property \ESD\Yii\Web\User $user The user component. This property is read-only.
  * @property \ESD\Yii\Caching\Cache $cache The cache application component. Null if the component is not enabled.
  */
@@ -54,10 +53,6 @@ class Application extends ServiceLocator
      * @var string the root directory of the application.
      */
     private $_basePath;
-
-    public $cookieValidationKey;
-
-    public $enableCsrfValidation;
 
     /**
      * @var static[] static instances in format: `[className => object]`
@@ -104,7 +99,6 @@ class Application extends ServiceLocator
                 $newConfig['components'][$id]['class'] = $component['class'];
             }
         }
-        print_r($newConfig);
         Component::__construct($newConfig);
         unset($newConfig);
         $this->getLog();
@@ -172,33 +166,16 @@ class Application extends ServiceLocator
      * @param string $name
      * @return mixed
      */
-    public function getDb($name = "default")
+    public function getDb($name = 'default')
     {
-        if ($name === "default") {
-            $poolKey = "default";
-            $contextKey = "Pdo:default";
-        } elseif ($name === "slave") {
-            $slaveConfigs = Server::$instance->getConfigContext()->get('esd-yii.db.default.slaves');
-            $slaveRandKey = array_rand($slaveConfigs);
-
-            $poolKey = sprintf("default.slave.%s", $slaveRandKey);
-            $contextKey = sprintf("Pdo:default.slave.%s", $slaveRandKey);
-        } elseif ($name === "master") {
-            $masterConfigs = Server::$instance->getConfigContext()->get('esd-yii.db.default.masters');
-            $masterRandKey = array_rand($masterConfigs);
-
-            $poolKey = sprintf("default.master.%s", $masterRandKey);
-            $contextKey = sprintf("Pdo:default.master.%s", $masterRandKey);
-        }
-
-        $db = getContextValue($contextKey);
+        $name = 'default';
+        $db = getContextValue("Pdo:$name");
         if ($db == null) {
             /** @var PdoPools $pdoPools */
             $pdoPools = getDeepContextValueByClassName(PdoPools::class);
-            $pool = $pdoPools->getPool($poolKey);
-
+            $pool = $pdoPools->getPool($name);
             if ($pool == null) {
-                throw new \PDOException("No Pdo connection pool named {$poolKey} was found");
+                throw new PostgresqlException("No Pdo connection pool named {$name} was found");
             }
             return $pool->db();
         } else {
@@ -241,7 +218,11 @@ class Application extends ServiceLocator
      */
     public function getI18n()
     {
-        return $this->get('i18n');
+        $i18n = Yii::createObject([
+            'class' => \ESD\Yii\I18n\I18N::class
+        ]);
+
+        return $i18n;
     }
 
     /**
@@ -257,14 +238,6 @@ class Application extends ServiceLocator
         return $session;
     }
 
-    /**
-     * Returns the security component.
-     * @return \yii\base\Security | \ESD\Yii\Base\Security the security application component.
-     */
-    public function getSecurity()
-    {
-        return $this->get('security');
-    }
 
     /**
      * Returns the configuration of core application components.
