@@ -29,7 +29,7 @@ class PdoPool
         $this->config = $config;
         $_config = $config->buildConfig();
 
-        $this->pool = DIGet(Channel::class, [10]);
+        $this->pool = DIGet(Channel::class, [$config->getPoolMaxNumber()]);
 
         for ($i = 0; $i < $config->getPoolMaxNumber(); $i++) {
             $db = $this->connect($config);
