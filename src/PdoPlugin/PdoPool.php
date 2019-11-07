@@ -4,8 +4,8 @@ namespace ESD\Yii\PdoPlugin;
 
 use ESD\Core\Channel\Channel;
 use ESD\Yii\Base\Application;
-use ESD\Yii\Yii;
 use ESD\Yii\Db\Connection;
+use ESD\Yii\Yii;
 
 
 class PdoPool
@@ -15,7 +15,7 @@ class PdoPool
      */
     protected $pool;
     /**
-     * @var PostgresqlOneConfig
+     * @var PdoOneConfig
      */
     protected $config;
 
@@ -51,12 +51,13 @@ class PdoPool
         $db->password = $config->getPassword();
         $db->charset = $config->getCharset();
         $db->tablePrefix = $config->getTablePrefix();
+        $db->poolType = $config->getPoolType();
         $db->open();
         return $db;
     }
 
     /**
-     * @return \ESD\Plugins\Postgresql\PostgresDb;
+     * @return \ESD\Yii\Db\Connection
      * @throws \ESD\BaseServer\Exception
      */
     public function db()
@@ -64,17 +65,20 @@ class PdoPool
         $contextKey = "Pdo:{$this->getConfig()->getName()}";
         $db = getContextValue($contextKey);
         if ($db == null) {
+            printf("pop之前pool个数: %d\n", $this->pool->swooleChannel->length());
             $db = $this->pool->pop();
+            printf("pop之后pool个数：%d\n", $this->pool->swooleChannel->length());
+            printf("\n\n");
             defer(function () use ($db) {
                 $this->pool->push($db);
             });
-            setContextValue("Pdo:{$contextKey}", $db);
+            setContextValue($contextKey, $db);
         }
         return $db;
     }
 
     /**
-     * @return PostgresqlOneConfig
+     * @return PdoOneConfig
      */
     public function getconfig()
     {
@@ -82,10 +86,15 @@ class PdoPool
     }
 
     /**
-     * @param PostgresqlOneConfig $config
+     * @param PdoOneConfig $config
      */
     public function setconfig($config)
     {
         $this->config = $config;
+    }
+
+    public function getPool()
+    {
+        return $this->pool;
     }
 }
