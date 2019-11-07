@@ -65,10 +65,7 @@ class PdoPool
         $contextKey = "Pdo:{$this->getConfig()->getName()}";
         $db = getContextValue($contextKey);
         if ($db == null) {
-            printf("pop之前pool个数: %d\n", $this->pool->swooleChannel->length());
             $db = $this->pool->pop();
-            printf("pop之后pool个数：%d\n", $this->pool->swooleChannel->length());
-            printf("\n\n");
             defer(function () use ($db) {
                 $this->pool->push($db);
             });
