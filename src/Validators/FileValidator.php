@@ -12,7 +12,7 @@ use ESD\Yii\Helpers\FileHelper;
 use ESD\Yii\Helpers\Html;
 use ESD\Yii\Helpers\Json;
 use ESD\Yii\Web\JsExpression;
-use yii\web\UploadedFile;
+use ESD\Yii\Web\UploadedFile;
 
 /**
  * FileValidator verifies if an attribute is receiving a valid uploaded file.

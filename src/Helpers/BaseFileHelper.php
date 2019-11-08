@@ -231,9 +231,11 @@ class BaseFileHelper
         if ($magicFile === null) {
             $magicFile = static::$mimeMagicFile;
         }
-        /*
-        $magicFile = Yii::getAlias($magicFile);
-        */
+
+        if (strpos($magicFile, './') === 0) {
+            $magicFile = realpath(__DIR__ . '/' . $magicFile);
+        }
+
         if (!isset(self::$_mimeTypes[$magicFile])) {
             self::$_mimeTypes[$magicFile] = require $magicFile;
         }
@@ -255,9 +257,11 @@ class BaseFileHelper
         if ($aliasesFile === null) {
             $aliasesFile = static::$mimeAliasesFile;
         }
-        /*
-        $aliasesFile = Yii::getAlias($aliasesFile);
-        */
+
+        if (strpos($aliasesFile, './') === 0) {
+            $aliasesFile = realpath(__DIR__ . '/' . $aliasesFile);
+        }
+
         if (!isset(self::$_mimeAliases[$aliasesFile])) {
             self::$_mimeAliases[$aliasesFile] = require $aliasesFile;
         }

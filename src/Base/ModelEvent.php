@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ESD\Yii\base;
+namespace ESD\Yii\Base;
 
 /**
  * ModelEvent represents the parameter needed by [[Model]] events.

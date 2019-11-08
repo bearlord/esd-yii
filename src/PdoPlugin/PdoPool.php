@@ -51,7 +51,6 @@ class PdoPool
         $db->password = $config->getPassword();
         $db->charset = $config->getCharset();
         $db->tablePrefix = $config->getTablePrefix();
-        $db->poolType = $config->getPoolType();
         $db->open();
         return $db;
     }

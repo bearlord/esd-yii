@@ -49,6 +49,8 @@ class Application extends ServiceLocator
      */
     public $sourceLanguage = 'en-US';
 
+    public $timeZone = 'Asia/Shanghai';
+
     /**
      * @var string the root directory of the application.
      */
@@ -240,16 +242,30 @@ class Application extends ServiceLocator
     }
 
     /**
+     * Returns the formatter component.
+     * @return \yii\i18n\Formatter the formatter application component.
+     */
+    public function getFormatter()
+    {
+        return $this->get('formatter');
+    }
+
+    /**
      * Returns the internationalization (i18n) component
      * @return \ESD\Yii\I18n\I18N the internationalization application component.
      */
     public function getI18n()
     {
-        $i18n = Yii::createObject([
-            'class' => \ESD\Yii\I18n\I18N::class
-        ]);
+        return $this->get('i18n');
+    }
 
-        return $i18n;
+    /**
+     * Returns the cache component.
+     * @return \ESD\Yii\Caching\Cache the cache application component. Null if the component is not enabled.
+     */
+    public function getCache()
+    {
+        return $this->get('cache');
     }
 
     /**
@@ -273,6 +289,7 @@ class Application extends ServiceLocator
     public function coreComponents()
     {
         return [
+            'formatter' => ['class' => '\ESD\Yii\I18n\Formatter'],
             'i18n' => ['class' => 'ESD\Yii\I18n\I18N'],
             'log' => ['class' => 'ESD\Yii\Log\Dispatcher'],
             'security' => ['class' => 'ESD\Yii\Base\Security']
