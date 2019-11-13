@@ -18,7 +18,7 @@ use ESD\Yii\Helpers\StringHelper;
  * @author Sergey Makinen <sergey@makinen.ru>
  * @since 2.0.14
  */
-class Command extends \yii\db\Command
+class Command extends \ESD\Yii\Db\Command
 {
     /**
      * {@inheritdoc}

@@ -187,7 +187,7 @@ class UniqueValidator extends Validator
             $exists = $query->exists();
         } else {
             // if current $model is in the database already we can't use exists()
-            if ($query instanceof \yii\db\ActiveQuery) {
+            if ($query instanceof \ESD\Yii\Db\ActiveQuery) {
                 // only select primary key to optimize query
                 $columnsCondition = array_flip($targetClass::primaryKey());
                 $query->select(array_flip($this->applyTableAlias($query, $columnsCondition)));

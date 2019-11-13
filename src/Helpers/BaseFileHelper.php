@@ -151,11 +151,6 @@ class BaseFileHelper
      */
     public static function getMimeType($file, $magicFile = null, $checkExtension = true)
     {
-        /*
-        if ($magicFile !== null) {
-            $magicFile = Yii::getAlias($magicFile);
-        }
-        */
         if (!extension_loaded('fileinfo')) {
             if ($checkExtension) {
                 return static::getMimeTypeByExtension($file, $magicFile);

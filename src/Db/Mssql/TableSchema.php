@@ -13,7 +13,7 @@ namespace ESD\Yii\Db\Mssql;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class TableSchema extends \yii\db\TableSchema
+class TableSchema extends \ESD\Yii\Db\TableSchema
 {
     /**
      * @var string name of the catalog (database) that this table belongs to.

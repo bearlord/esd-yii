@@ -111,8 +111,6 @@ class UploadedFile extends BaseObject
     public static function getInstanceByName($name)
     {
         $files = self::loadFiles();
-        var_dump("file:", $files,  $files[$name]);
-
         return isset($files[$name]) ? new static($files[$name]) : null;
     }
 

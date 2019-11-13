@@ -14,7 +14,7 @@ use yii\rbac\DbManager;
  * @author Alexander Kochetov <creocoder@gmail.com>
  * @since 2.0
  */
-class m140506_102106_rbac_init extends \yii\db\Migration
+class m140506_102106_rbac_init extends \ESD\Yii\Db\Migration
 {
     /**
      * @throws yii\base\InvalidConfigException

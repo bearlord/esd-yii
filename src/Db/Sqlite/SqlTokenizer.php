@@ -16,7 +16,7 @@ namespace ESD\Yii\Db\Sqlite;
  * @author Sergey Makinen <sergey@makinen.ru>
  * @since 2.0.13
  */
-class SqlTokenizer extends \yii\db\SqlTokenizer
+class SqlTokenizer extends \ESD\Yii\Db\SqlTokenizer
 {
     /**
      * {@inheritdoc}

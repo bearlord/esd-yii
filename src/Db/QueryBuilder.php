@@ -377,7 +377,7 @@ class QueryBuilder extends BaseObject
 
                 if ($value instanceof ExpressionInterface) {
                     $placeholders[] = $this->buildExpression($value, $params);
-                } elseif ($value instanceof \yii\db\Query) {
+                } elseif ($value instanceof \ESD\Yii\Db\Query) {
                     list($sql, $params) = $this->build($value, $params);
                     $placeholders[] = "($sql)";
                 } else {
