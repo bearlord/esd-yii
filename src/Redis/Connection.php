@@ -446,9 +446,6 @@ class Connection extends Component
     public function init()
     {
         parent::init();
-        $this->_redis = $this->redis();
-        $database  = Server::$instance->getConfigContext()->get('esd-yii.components.cache.redis.database');
-        $this->_redis->select($database);
     }
 
     /**
@@ -506,9 +503,13 @@ class Connection extends Component
      */
     private function sendCommandInternal($command, $params)
     {
+        $redisHandle= $this->redis();
+        $database  = Server::$instance->getConfigContext()->get('esd-yii.components.cache.redis.database');
+        $redisHandle->select($database);
+
         $redisCommand = strtoupper(Inflector::camel2words($command, false));
         if (in_array($redisCommand, $this->redisCommands)) {
-            return call_user_func_array([$this->_redis, $redisCommand], $params);
+            return call_user_func_array([$redisHandle, $redisCommand], $params);
         }
     }
 
@@ -525,10 +526,13 @@ class Connection extends Component
      */
     public function __call($name, $params)
     {
+        $redisHandle= $this->redis();
+        $database  = Server::$instance->getConfigContext()->get('esd-yii.components.cache.redis.database');
+        $redisHandle->select($database);
+
         $redisCommand = strtoupper(Inflector::camel2words($name, false));
         if (in_array($redisCommand, $this->redisCommands)) {
-            $this->redis()->select($this->database);
-            return call_user_func_array([$this->_redis, $redisCommand], $params);
+            return call_user_func_array([$redisHandle, $redisCommand], $params);
         } else {
             return parent::__call($name, $params);
         }
