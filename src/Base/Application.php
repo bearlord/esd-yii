@@ -243,7 +243,7 @@ class Application extends ServiceLocator
 
     /**
      * Returns the formatter component.
-     * @return \yii\i18n\Formatter the formatter application component.
+     * @return \ESD\Yii\I18n\Formatter the formatter application component.
      */
     public function getFormatter()
     {
