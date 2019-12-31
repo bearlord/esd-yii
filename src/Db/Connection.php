@@ -13,7 +13,7 @@ use ESD\Yii\Base\InvalidConfigException;
 use League\Flysystem\NotSupportedException;
 use ESD\Yii\Yii;
 
-use yii\caching\CacheInterface;
+use ESD\Yii\Caching\CacheInterface;
 
 /**
  * Connection represents a connection to a database via [PDO](https://secure.php.net/manual/en/book.pdo.php).
