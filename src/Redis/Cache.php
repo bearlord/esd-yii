@@ -176,13 +176,7 @@ class Cache extends \ESD\Yii\Caching\Cache
      */
     protected function setValue($key, $value, $expire)
     {
-        if ($expire == 0) {
-            return (bool) $this->redis->executeCommand('SET', [$key, $value]);
-        } else {
-            $expire = (int) ($expire * 1000);
-
-            return (bool) $this->redis->executeCommand('PSETEX', [$key, $expire, $value]);
-        }
+        return (bool) $this->redis->executeCommand('SET', [$key, $value, $expire]);
     }
 
     /**

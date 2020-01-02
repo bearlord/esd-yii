@@ -13,7 +13,7 @@ use ESD\Yii\Base\InvalidConfigException;
 use League\Flysystem\NotSupportedException;
 use ESD\Yii\Yii;
 
-use ESD\Yii\Caching\CacheInterface;
+use yii\caching\CacheInterface;
 
 /**
  * Connection represents a connection to a database via [PDO](https://secure.php.net/manual/en/book.pdo.php).
@@ -442,6 +442,14 @@ class Connection extends Component
      * @var array query cache parameters for the [[cache()]] calls
      */
     private $_queryCacheInfo = [];
+    /**
+     * @var string[] quoted table name cache for [[quoteTableName()]] calls
+     */
+    private $_quotedTableNames;
+    /**
+     * @var string[] quoted column name cache for [[quoteColumnName()]] calls
+     */
+    private $_quotedColumnNames;
 
 
     /**

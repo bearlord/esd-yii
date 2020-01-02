@@ -137,7 +137,7 @@ class Container extends Component
      * In this case, the constructor parameters and object configurations will be used
      * only if the class is instantiated the first time.
      *
-     * @param string $class the class name or an alias name (e.g. `foo`) that was previously registered via [[set()]]
+     * @param string|Instance $class the class Instance, name or an alias name (e.g. `foo`) that was previously registered via [[set()]]
      * or [[setSingleton()]].
      * @param array $params a list of constructor parameter values. The parameters should be provided in the order
      * they appear in the constructor declaration. If you want to skip some parameters, you should index the remaining
@@ -149,6 +149,9 @@ class Container extends Component
      */
     public function get($class, $params = [], $config = [])
     {
+        if ($class instanceof Instance) {
+            $class = $class->id;
+        }
         if (isset($this->_singletons[$class])) {
             // singleton
             return $this->_singletons[$class];
@@ -323,9 +326,15 @@ class Container extends Component
             return ['class' => $class];
         } elseif (is_string($definition)) {
             return ['class' => $definition];
+        } elseif ($definition instanceof Instance) {
+            return ['class' => $definition->id];
         } elseif (is_callable($definition, true) || is_object($definition)) {
             return $definition;
         } elseif (is_array($definition)) {
+            if (!isset($definition['class']) && isset($definition['__class'])) {
+                $definition['class'] = $definition['__class'];
+                unset($definition['__class']);
+            }
             if (!isset($definition['class'])) {
                 if (strpos($class, '\\') !== false) {
                     $definition['class'] = $class;
@@ -359,10 +368,17 @@ class Container extends Component
      * @return object the newly created instance of the specified class
      * @throws NotInstantiableException If resolved to an abstract class or an interface (since 2.0.9)
      */
-    public function build($class, $params, $config)
+    protected function build($class, $params, $config)
     {
         /* @var $reflection ReflectionClass */
         list($reflection, $dependencies) = $this->getDependencies($class);
+
+        if (isset($config['__construct()'])) {
+            foreach ($config['__construct()'] as $index => $param) {
+                $dependencies[$index] = $param;
+            }
+            unset($config['__construct()']);
+        }
 
         foreach ($params as $index => $param) {
             $dependencies[$index] = $param;
@@ -378,7 +394,7 @@ class Container extends Component
 
         $config = $this->resolveDependencies($config);
 
-        if (!empty($dependencies) && $reflection->implementsInterface('ESD\Yii\Base\Configurable')) {
+        if (!empty($dependencies) && $reflection->implementsInterface('yii\base\Configurable')) {
             // set $config as the last parameter (existing one will be overwritten)
             $dependencies[count($dependencies) - 1] = $config;
             return $reflection->newInstanceArgs($dependencies);
@@ -630,7 +646,7 @@ class Container extends Component
     public function setDefinitions(array $definitions)
     {
         foreach ($definitions as $class => $definition) {
-            if (is_array($definition) && count($definition) === 2 && array_values($definition) === $definition) {
+            if (is_array($definition) && count($definition) === 2 && array_values($definition) === $definition && is_array($definition[1])) {
                 $this->set($class, $definition[0], $definition[1]);
                 continue;
             }

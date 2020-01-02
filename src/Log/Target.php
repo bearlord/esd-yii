@@ -113,7 +113,7 @@ abstract class Target extends Component
      * Defaults to 1000. Note that messages will always be exported when the application terminates.
      * Set this property to be 0 if you don't want to export messages until the application terminates.
      */
-    public $exportInterval = 3;
+    public $exportInterval = 1000;
     /**
      * @var array the messages that are retrieved from the logger so far by this log target.
      * Please refer to [[Logger::messages]] for the details about the message structure.
