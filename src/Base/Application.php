@@ -57,6 +57,11 @@ class Application extends ServiceLocator
     private $_basePath;
 
     /**
+     * @var string a secret key used for cookie validation.
+     */
+    public $cookieValidationKey;
+
+    /**
      * @var static[] static instances in format: `[className => object]`
      */
     private static $_instances = [];
@@ -165,8 +170,10 @@ class Application extends ServiceLocator
     }
 
     /**
+     * Get db
+     *
      * @param string $name
-     * @return mixed
+     * @return Connection
      */
     public function getDb($name = "default")
     {
@@ -223,7 +230,7 @@ class Application extends ServiceLocator
 
     /**
      * Returns the request component.
-     * @return \yii\web\Request|\yii\console\Request | \ESD\Core\Server\Beans\Request the request component.
+     * @return \yii\web\Request|\yii\console\Request |\ESD\Core\Server\Beans\Request the request component.
      */
     public function getRequest()
     {
@@ -243,7 +250,7 @@ class Application extends ServiceLocator
 
     /**
      * Returns the formatter component.
-     * @return \yii\i18n\Formatter the formatter application component.
+     * @return \ESD\Yii\I18n\Formatter the formatter application component.
      */
     public function getFormatter()
     {
