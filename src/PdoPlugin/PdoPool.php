@@ -51,6 +51,9 @@ class PdoPool
         $db->password = $config->getPassword();
         $db->charset = $config->getCharset();
         $db->tablePrefix = $config->getTablePrefix();
+        $db->enableSchemaCache = $config->getEnableSchemaCache();
+        $db->schemaCacheDuration = $config->getSchemaCacheDuration();
+        $db->schemaCache = $config->getSchemaCache();
         $db->open();
         return $db;
     }

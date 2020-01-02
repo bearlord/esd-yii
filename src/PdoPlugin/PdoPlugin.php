@@ -127,6 +127,9 @@ class PdoPlugin extends \ESD\Core\PlugIn\AbstractPlugin
             $v['poolMaxNumber'] = $config['masterConfig']['poolMaxNumber'];
             $v['charset'] = $config['charset'];
             $v['tablePrefix'] = $config['tablePrefix'];
+            $v['enableSchemaCache'] = $config['enableSchemaCache'];
+            $v['schemaCacheDuration'] = $config['schemaCacheDuration'];
+            $v['schemaCache'] = $config['schemaCache'];
             $row[] = $v;
         }
         return $row;
@@ -151,6 +154,9 @@ class PdoPlugin extends \ESD\Core\PlugIn\AbstractPlugin
             $v['poolMaxNumber'] = $config['slaveConfig']['poolMaxNumber'];
             $v['charset'] = $config['charset'];
             $v['tablePrefix'] = $config['tablePrefix'];
+            $v['enableSchemaCache'] = $config['enableSchemaCache'];
+            $v['schemaCacheDuration'] = $config['schemaCacheDuration'];
+            $v['schemaCache'] = $config['schemaCache'];
             $row [] = $v;
         }
         return $row;
