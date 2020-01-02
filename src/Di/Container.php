@@ -394,7 +394,7 @@ class Container extends Component
 
         $config = $this->resolveDependencies($config);
 
-        if (!empty($dependencies) && $reflection->implementsInterface('yii\base\Configurable')) {
+        if (!empty($dependencies) && $reflection->implementsInterface('ESD\Yii\Base\Configurable')) {
             // set $config as the last parameter (existing one will be overwritten)
             $dependencies[count($dependencies) - 1] = $config;
             return $reflection->newInstanceArgs($dependencies);
