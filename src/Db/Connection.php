@@ -442,6 +442,14 @@ class Connection extends Component
      * @var array query cache parameters for the [[cache()]] calls
      */
     private $_queryCacheInfo = [];
+    /**
+     * @var string[] quoted table name cache for [[quoteTableName()]] calls
+     */
+    private $_quotedTableNames;
+    /**
+     * @var string[] quoted column name cache for [[quoteColumnName()]] calls
+     */
+    private $_quotedColumnNames;
 
 
     /**

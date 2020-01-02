@@ -185,7 +185,7 @@ class Dispatcher extends Component
         foreach ($this->targets as $target) {
             if ($target->enabled) {
                 try {
-                    $r = $target->collect($messages, $final);
+                    $target->collect($messages, $final);
                 } catch (\Exception $e) {
                     $target->enabled = false;
                     $targetErrors[] = [
