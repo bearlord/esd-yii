@@ -5,14 +5,14 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\behaviors;
+namespace ESD\Yii\Behaviors;
 
-use yii\base\InvalidConfigException;
-use yii\db\BaseActiveRecord;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Inflector;
-use yii\validators\UniqueValidator;
-use Yii;
+use ESD\Yii\Base\InvalidConfigException;
+use ESD\Yii\Db\BaseActiveRecord;
+use ESD\Yii\Helpers\ArrayHelper;
+use ESD\Yii\Helpers\Inflector;
+use ESD\Yii\Validators\UniqueValidator;
+use ESD\Yii\Yii;
 
 /**
  * SluggableBehavior automatically fills the specified attribute with a value that can be used a slug in a URL.
