@@ -345,7 +345,7 @@ class Pagination extends BaseObject implements Linkable
     {
         if (($params = $this->params) === null) {
             $request = Yii::$app->getRequest();
-            $params = $request->getQueryParams();
+            $params = $request->input();
         }
 
         return isset($params[$name]) && is_scalar($params[$name]) ? $params[$name] : $defaultValue;
