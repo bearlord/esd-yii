@@ -27,22 +27,36 @@ class Config extends BaseConfig
      */
     protected $dsn;
     /**
-     * @var string
+     * @var username
      */
     protected $username;
     /**
-     * @var string
+     * @var password
      */
     protected $password;
     /**
-     * 表前缀
-     * @var string
+     * @var table prefix
      */
     protected $tablePrefix;
     /**
      * @var string
      */
     protected $charset;
+
+    /**
+     * @var Enable schema cache
+     */
+    protected $enableSchemaCache;
+
+    /**
+     * @var Schema cache duration
+     */
+    protected $schemaCacheDuration;
+
+    /**
+     * @var Schema cache component
+     */
+    protected $schemaCache;
 
     /**
      * Config constructor.
@@ -195,8 +209,56 @@ class Config extends BaseConfig
     }
 
     /**
-     * 构建配置
-     * @throws postgresqlException
+ * @return string
+ */
+    public function getEnableSchemaCache(): string
+    {
+        return $this->enableSchemaCache;
+    }
+
+    /**
+     * @param bool|int|mixed $enable
+     */
+    public function setEnableSchemaCache($enable): void
+    {
+        $this->enableSchemaCache = (bool)$enable;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSchemaCacheDuration(): string
+    {
+        return $this->schemaCacheDuration;
+    }
+
+    /**
+     * @param int $duratioin
+     */
+    public function setSchemaCacheDuration($duratioin): void
+    {
+        $this->schemaCacheDuration = $duratioin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSchemaCache(): string
+    {
+        return $this->schemaCache;
+    }
+
+    /**
+     * @param string $cache
+     */
+    public function setSchemaCache($cache): void
+    {
+        $this->schemaCache = $cache;
+    }
+
+    /**
+     * Build config
+     * @return array
      */
     public function buildConfig()
     {
@@ -207,11 +269,16 @@ class Config extends BaseConfig
             'password' => $this->password,
             'tablePrefix' => $this->tablePrefix,
             'charset' => $this->charset,
-            'poolMaxNumber' => $this->poolMaxNumber
+            'poolMaxNumber' => $this->poolMaxNumber,
+            'enableSchemaCache' => $this->enableSchemaCache,
+            'schemaCacheDuration' => $this->schemaCacheDuration,
+            'schemaCache' => $this->schemaCache,
         ];
     }
 
     /**
+     * Build config from array
+     *
      * @param $array
      */
     public function buildFromArray($array)
@@ -223,6 +290,10 @@ class Config extends BaseConfig
         $self->setCharset($array['charset']);
         $self->setTablePrefix($array['tablePrefix']);
         $self->setPoolMaxNumber($array['poolMaxNumber']);
+        $self->setEnableSchemaCache($array['enableSchemaCache']);
+        $self->setSchemaCacheDuration($array['schemaCacheDuration']);
+        $self->setSchemaCache($array['schemaCache']);
+
         return $self;
     }
 
