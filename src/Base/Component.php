@@ -7,7 +7,7 @@
 
 namespace ESD\Yii\Base;
 
-use Yii;
+use ESD\Yii;
 use ESD\Yii\Helpers\StringHelper;
 
 /**
