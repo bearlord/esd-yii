@@ -8,7 +8,7 @@
 namespace ESD\Yii\Behaviors;
 
 use ESD\Yii\Base\Behavior;
-use yii\base\InvalidParamException;
+use ESD\Yii\Base\InvalidParamException;
 use ESD\Yii\Base\Model;
 use ESD\Yii\Db\BaseActiveRecord;
 use ESD\Yii\Validators\BooleanValidator;

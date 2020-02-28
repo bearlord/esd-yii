@@ -5,10 +5,10 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\behaviors;
+namespace ESD\Yii\Behaviors;
 
-use yii\base\InvalidCallException;
-use yii\db\BaseActiveRecord;
+use ESD\Yii\Base\InvalidCallException;
+use ESD\Yii\Db\ActiveRecord;
 
 /**
  * TimestampBehavior automatically fills the specified attributes with the current timestamp.
